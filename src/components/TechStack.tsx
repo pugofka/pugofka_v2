@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 
 const technologies = [
-    'Laravel', 'Go', 'Python', 'Bitrix', 'Next.js', 'React', 'PostgreSQL', 'Docker', 'Redis', 'TypeScript'
+    'Laravel', 'Go', 'Python', 'Bitrix', 'Next.js', 'React', 'PostgreSQL', 'MySQL', 'Cassandra', 'YugabyteDB', 'Docker', 'Redis', 'TypeScript'
 ];
 
 export default function TechStack() {

@@ -1,10 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useUI } from '@/context/UIContext';
 import { ArrowRight, Check, Database, Server, ShoppingCart, Zap, Code, Globe, Shield, Cpu, Network } from 'lucide-react';
 import Link from 'next/link';
 
 export default function EcommercePage() {
+    const { openContact } = useUI();
     return (
         <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white pt-20">
             {/* 1. Hero: Business Value + Tech Reliability */}
@@ -224,9 +226,9 @@ export default function EcommercePage() {
             <section className="py-20 bg-surface">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-4xl font-bold uppercase mb-8">Нужен современный магазин?</h2>
-                    <Link href="/contacts" className="inline-block px-8 py-4 bg-primary text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
+                    <button onClick={openContact} className="inline-block px-8 py-4 bg-primary text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors">
                         Рассчитать проект
-                    </Link>
+                    </button>
                 </div>
             </section>
         </main>

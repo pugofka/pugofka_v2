@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Cpu, Rocket } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useUI } from '@/context/UIContext';
 
 export default function HeroSection() {
+  const { openContact } = useUI();
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-20 border-b border-border">
       {/* Industrial Grid Background */}
@@ -45,15 +48,15 @@ export default function HeroSection() {
             </div>
 
             <div className="md:col-span-7 flex flex-col md:flex-row gap-6 items-start md:items-center justify-end">
-              <button className="group relative px-8 py-6 bg-primary text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors w-full md:w-auto">
+              <button onClick={openContact} className="group relative px-8 py-6 bg-primary text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors w-full md:w-auto">
                 <span className="flex items-center justify-between gap-8">
                   Обсудить проект <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
 
-              <button className="group px-8 py-6 border border-border text-white font-bold uppercase tracking-wider hover:border-white transition-colors w-full md:w-auto">
+              <Link href="/portfolio" className="group px-8 py-6 border border-border text-white font-bold uppercase tracking-wider hover:border-white transition-colors w-full md:w-auto text-center">
                 Портфолио
-              </button>
+              </Link>
             </div>
           </div>
         </div>

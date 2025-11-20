@@ -1,11 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useUI } from '@/context/UIContext';
 import Header from '@/components/Header';
 import { ArrowRight, Rocket, Target, Clock, ShieldCheck, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export default function StartupsPage() {
+    const { openContact } = useUI();
     return (
         <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
             <Header />
@@ -38,9 +40,9 @@ export default function StartupsPage() {
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/#contact" className="bg-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-red-600 transition-colors flex items-center gap-2">
+                            <button onClick={openContact} className="bg-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-red-600 transition-colors flex items-center gap-2">
                                 Запустить стартап <ArrowRight className="w-5 h-5" />
-                            </Link>
+                            </button>
                         </div>
                     </motion.div>
                 </div>

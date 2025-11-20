@@ -1,12 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useUI } from '@/context/UIContext';
 import Header from '@/components/Header';
 import { ArrowRight, ArrowUpRight, CheckCircle, Layers, Zap, Globe, Database, Server, Users } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function KapousWebPage() {
+    const { openContact } = useUI();
     return (
         <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
             <Header />
@@ -165,12 +167,12 @@ export default function KapousWebPage() {
 
             {/* Next Case Navigation */}
             <section className="py-24 px-6 text-center">
-                <Link href="/#contact" className="inline-flex flex-col items-center gap-4 group">
+                <button onClick={openContact} className="inline-flex flex-col items-center gap-4 group">
                     <span className="text-gray-500 font-mono uppercase tracking-widest text-sm">Нужен масштабный проект?</span>
                     <span className="text-4xl md:text-6xl font-bold uppercase group-hover:text-primary transition-colors">
                         Обсудить разработку
                     </span>
-                </Link>
+                </button>
             </section>
         </main>
     );

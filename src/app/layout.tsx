@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import { UIProvider } from "@/context/UIContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,8 +29,12 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
-        <Header />
-        {children}
+        <UIProvider>
+          <Header />
+          {children}
+          <Footer />
+          <CookieConsent />
+        </UIProvider>
       </body>
     </html>
   );

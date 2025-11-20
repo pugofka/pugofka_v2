@@ -1,11 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useUI } from '@/context/UIContext';
 import Header from '@/components/Header';
 import { ArrowRight, Terminal, Cpu, Database, Layers, Code2, GitBranch } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CustomDevPage() {
+    const { openContact } = useUI();
     return (
         <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
             <Header />
@@ -39,9 +41,9 @@ export default function CustomDevPage() {
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/#contact" className="bg-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-red-600 transition-colors flex items-center gap-2">
+                            <button onClick={openContact} className="bg-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-red-600 transition-colors flex items-center gap-2">
                                 Обсудить проект <ArrowRight className="w-5 h-5" />
-                            </Link>
+                            </button>
                         </div>
                     </motion.div>
                 </div>
@@ -155,11 +157,14 @@ export default function CustomDevPage() {
             <section className="py-24 bg-surface/20 border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 text-center">
                     <h2 className="text-3xl font-bold uppercase mb-16">Инфраструктура данных</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
                         {[
                             { name: "PostgreSQL", label: "Relational DB" },
+                            { name: "MySQL", label: "Relational DB" },
                             { name: "ClickHouse", label: "Analytics" },
                             { name: "Redis", label: "Cache / Queues" },
+                            { name: "Cassandra", label: "NoSQL" },
+                            { name: "YugabyteDB", label: "Distributed SQL" },
                             { name: "Docker", label: "Containerization" }
                         ].map((tech, i) => (
                             <div key={i} className="flex flex-col items-center justify-center p-6 border border-border hover:border-primary transition-colors bg-background">
