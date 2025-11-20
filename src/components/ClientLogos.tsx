@@ -54,7 +54,7 @@ export default function ClientLogos() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
             {/* Header */}
-            <div className="max-w-7xl mx-auto px-6 mb-20 relative z-10">
+            <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
                 <div className="flex items-center justify-center gap-4">
                     <div className="h-px w-12 bg-border" />
                     <h2 className="text-xs md:text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground/60">
@@ -65,54 +65,57 @@ export default function ClientLogos() {
             </div>
 
             {/* Gradient Masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
-            <div className="flex relative z-0">
-                <motion.div
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        repeat: Infinity,
-                        ease: "linear",
-                        duration: 50,
-                    }}
-                    className="flex gap-24 md:gap-40 whitespace-nowrap px-20 group-hover/section:[animation-play-state:paused]"
-                >
+            <div className="flex flex-col gap-12 md:gap-20 relative z-0 hover:[&_*]:[animation-play-state:paused]">
+                {/* Row 1: Left */}
+                <div className="flex animate-marquee whitespace-nowrap">
                     {[...clients, ...clients].map((client, index) => (
-                        <div
-                            key={index}
-                            className="group flex flex-col items-center justify-center gap-8 min-w-[200px] cursor-pointer relative"
-                        >
-                            {/* Hover Glow Background */}
-                            <div className="absolute inset-0 -z-10 bg-white/0 group-hover:bg-white/5 blur-2xl rounded-full transition-all duration-500 scale-0 group-hover:scale-150" />
-
-                            {client.logo ? (
-                                <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-500 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110">
-                                    <Image
-                                        src={client.logo}
-                                        alt={client.name}
-                                        fill
-                                        className="object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-500"
-                                    />
-                                </div>
-                            ) : (
-                                <div className="h-12 md:h-16 flex items-center relative group-hover:scale-110 transition-transform duration-500">
-                                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter text-white/40 group-hover:text-white transition-colors duration-500">
-                                        {client.name}
-                                    </h3>
-                                </div>
-                            )}
-
-                            <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                                <div className="h-px w-8 bg-red-500" />
-                                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                                    {client.category}
-                                </span>
-                            </div>
-                        </div>
+                        <LogoItem key={`row1-${index}`} client={client} />
                     ))}
-                </motion.div>
+                </div>
+
+                {/* Row 2: Right */}
+                <div className="flex animate-marquee-reverse whitespace-nowrap">
+                    {[...clients, ...clients].map((client, index) => (
+                        <LogoItem key={`row2-${index}`} client={client} />
+                    ))}
+                </div>
             </div>
         </section>
+    );
+}
+
+function LogoItem({ client }: { client: typeof clients[0] }) {
+    return (
+        <div className="group flex flex-col items-center justify-center gap-8 min-w-[200px] md:min-w-[300px] cursor-pointer relative mx-8 md:mx-12">
+            {/* Hover Glow Background */}
+            <div className="absolute inset-0 -z-10 bg-white/0 group-hover:bg-white/5 blur-2xl rounded-full transition-all duration-500 scale-0 group-hover:scale-150" />
+
+            {client.logo ? (
+                <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-500 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110">
+                    <Image
+                        src={client.logo}
+                        alt={client.name}
+                        fill
+                        className="object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-500"
+                    />
+                </div>
+            ) : (
+                <div className="h-12 md:h-16 flex items-center relative group-hover:scale-110 transition-transform duration-500">
+                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter text-white/40 group-hover:text-white transition-colors duration-500">
+                        {client.name}
+                    </h3>
+                </div>
+            )}
+
+            <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                <div className="h-px w-8 bg-red-500" />
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                    {client.category}
+                </span>
+            </div>
+        </div>
     );
 }
