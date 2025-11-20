@@ -13,24 +13,6 @@ export default function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 z-10 relative h-full flex flex-col justify-center">
-        {/* Top Bar with Logo */}
-        <div className="absolute top-0 left-0 w-full border-b border-border bg-background/80 backdrop-blur-sm">
-          <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-            <div className="w-40 md:w-48 relative h-12">
-              <Image
-                src="/logo.svg"
-                alt="Pugofka Logo"
-                fill
-                className="object-contain object-left"
-                priority
-              />
-            </div>
-            <div className="hidden md:flex gap-8 font-mono text-sm text-gray-400">
-              <span>EST. 2011</span>
-              <span>ST. PETERSBURG</span>
-            </div>
-          </div>
-        </div>
 
         <div className="max-w-6xl mx-auto mt-20">
           <motion.div
