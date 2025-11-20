@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ShoppingCart, Server, Rocket, Zap, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ShoppingCart, Zap, Code, Rocket, LifeBuoy, MonitorPlay } from 'lucide-react';
 import Link from 'next/link';
 
 const services = [
@@ -10,39 +10,55 @@ const services = [
         number: '01',
         title: 'E-commerce',
         subtitle: '& Bitrix',
-        description: 'Масштабируемые интернет-магазины и B2B-порталы. Сложные интеграции (1С, ERP). Компетенции в Битрикс24.',
+        description: 'Крупные интернет-магазины на 1С-Битрикс. Интеграции с 1С, МойСклад и маркетплейсами.',
         icon: ShoppingCart,
     },
     {
-        id: 'custom',
+        id: 'bitrix',
         number: '02',
-        title: 'Custom Dev',
-        subtitle: '& Highload',
-        description: 'Сложные системы на Laravel & Go. Личные кабинеты, маркетплейсы и высоконагруженные бэкенды.',
-        icon: Server,
+        title: 'Bitrix24',
+        subtitle: 'Automation',
+        description: 'Внедрение CRM, автоматизация отделов продаж и сквозная аналитика.',
+        icon: Zap,
     },
     {
-        id: 'startup',
+        id: 'custom',
         number: '03',
-        title: 'Startups',
-        subtitle: '& MVP',
-        description: 'Быстрый запуск MVP для проверки гипотез. Технический консалтинг и масштабирование продукта.',
+        title: 'Custom',
+        subtitle: 'Development',
+        description: 'High-load системы, личные кабинеты и микросервисы на Laravel, Go и Python.',
+        icon: Code,
+    },
+    {
+        id: 'startups',
+        number: '04',
+        title: 'Startup',
+        subtitle: 'Launchpad',
+        description: 'Техническое партнерство для стартапов. MVP за 2-3 месяца. От идеи до скейлинга.',
         icon: Rocket,
     },
     {
+        id: 'support',
+        number: '05',
+        title: 'Support',
+        subtitle: '& SLA',
+        description: 'Техническая поддержка 24/7, развитие проектов, DevOps и рефакторинг легаси.',
+        icon: LifeBuoy,
+    },
+    {
         id: 'express',
-        number: '04',
+        number: '06',
         title: 'Express',
         subtitle: 'Web',
-        description: 'Быстрый запуск на шаблонах Битрикс для малого бизнеса.',
-        icon: Zap,
+        description: 'Быстрый запуск на готовых решениях и шаблонах. Идеально для проверки гипотез.',
+        icon: MonitorPlay,
     },
 ];
 
 export default function ServicesGrid() {
     return (
         <section className="border-b border-border bg-background">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {services.map((service, index) => {
                     const CardContent = (
                         <motion.div
@@ -74,13 +90,12 @@ export default function ServicesGrid() {
                         </motion.div>
                     );
 
-                    if (service.id === 'ecom') {
-                        return (
-                            <Link href="/services/ecommerce" key={service.id} className="block h-full">
-                                {CardContent}
-                            </Link>
-                        );
-                    }
+                    if (service.id === 'ecom') return <Link href="/services/ecommerce" key={service.id} className="block h-full">{CardContent}</Link>;
+                    if (service.id === 'bitrix') return <Link href="/services/bitrix24" key={service.id} className="block h-full">{CardContent}</Link>;
+                    if (service.id === 'custom') return <Link href="/services/custom" key={service.id} className="block h-full">{CardContent}</Link>;
+                    if (service.id === 'startups') return <Link href="/services/startups" key={service.id} className="block h-full">{CardContent}</Link>;
+                    if (service.id === 'support') return <Link href="/services/support" key={service.id} className="block h-full">{CardContent}</Link>;
+                    if (service.id === 'express') return <Link href="/services/express" key={service.id} className="block h-full">{CardContent}</Link>;
 
                     return <div key={service.id} className="h-full">{CardContent}</div>;
                 })}
