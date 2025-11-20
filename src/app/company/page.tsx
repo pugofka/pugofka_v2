@@ -44,7 +44,7 @@ export default function CompanyPage() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="text-xl md:text-2xl text-muted-foreground max-w-2xl font-mono border-l-2 border-primary pl-6"
                         >
-                            Pugofka — это не креативное агентство. Это промышленный стандарт веб-разработки. Мы создаем системы, которые работают как швейцарские часы и масштабируются как заводы Ford.
+                            Pugofka — это не креативное агентство. Это промышленный стандарт веб-разработки. Мы создаем системы, которые работают как швейцарские часы и растут вместе с вашим бизнесом.
                         </motion.p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ export default function CompanyPage() {
                     <div className="flex flex-col items-end gap-2 font-mono text-xs text-muted-foreground/40">
                         <span>SYS.STATUS: ONLINE</span>
                         <span>UPTIME: 99.99%</span>
-                        <span>LOC: 34.2891° N, 45.1234° E</span>
+                        <span>LOC: 59.9343° N, 30.3351° E</span>
                     </div>
                 </div>
             </section>
@@ -161,54 +161,7 @@ export default function CompanyPage() {
                 </div>
             </section>
 
-            {/* Team Section - Data Grid */}
-            <section className="py-32 border-b border-border">
-                <div className="container mx-auto px-6">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">
-                            ОПЕРАТОРЫ <br />
-                            СИСТЕМЫ
-                        </h2>
-                        <p className="text-muted-foreground font-mono text-sm max-w-xs text-right">
-                            // НАША КОМАНДА СОСТОИТ ИЗ СЕНЬОР-РАЗРАБОТЧИКОВ И АРХИТЕКТОРОВ
-                        </p>
-                    </div>
 
-                    <div className="border border-border">
-                        {/* Table Header */}
-                        <div className="grid grid-cols-12 border-b border-border bg-surface p-4 font-mono text-xs text-muted-foreground uppercase tracking-wider">
-                            <div className="col-span-4 md:col-span-3">Unit Name</div>
-                            <div className="col-span-4 md:col-span-3">Role / Class</div>
-                            <div className="col-span-4 md:col-span-4">Specialization</div>
-                            <div className="col-span-0 md:col-span-2 hidden md:block text-right">Status</div>
-                        </div>
-
-                        {/* Table Rows */}
-                        {[
-                            { name: "VITALIY YUSHKEVICH", role: "FOUNDER / ARCHITECT", spec: "SYSTEM ARCHITECTURE, FULLSTACK", status: "ONLINE" },
-                            { name: "ALEXEY VOLKOV", role: "LEAD FRONTEND", spec: "REACT, NEXT.JS, WEBGL", status: "BUSY" },
-                            { name: "DMITRY SOKOLOV", role: "LEAD BACKEND", spec: "GO, PYTHON, HIGHLOAD", status: "ONLINE" },
-                            { name: "ELENA POPOVA", role: "PRODUCT DESIGNER", spec: "UI/UX, DESIGN SYSTEMS", status: "AWAY" },
-                        ].map((member, index) => (
-                            <div key={index} className="grid grid-cols-12 border-b border-border last:border-b-0 p-4 font-mono text-sm hover:bg-surface transition-colors group cursor-default">
-                                <div className="col-span-4 md:col-span-3 font-bold group-hover:text-primary transition-colors">
-                                    {member.name}
-                                </div>
-                                <div className="col-span-4 md:col-span-3 text-muted-foreground">
-                                    {member.role}
-                                </div>
-                                <div className="col-span-4 md:col-span-4 text-muted-foreground/70 text-xs md:text-sm flex items-center">
-                                    {member.spec}
-                                </div>
-                                <div className="col-span-0 md:col-span-2 hidden md:flex justify-end items-center gap-2">
-                                    <div className={`w-2 h-2 rounded-full ${member.status === 'ONLINE' ? 'bg-green-500' : member.status === 'BUSY' ? 'bg-yellow-500' : 'bg-gray-500'}`} />
-                                    <span className="text-xs opacity-50">{member.status}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* CTA Section */}
             <section className="py-32 bg-primary text-white relative overflow-hidden">

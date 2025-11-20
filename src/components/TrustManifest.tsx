@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function TrustManifest() {
     return (
@@ -13,9 +14,9 @@ export default function TrustManifest() {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                     <div className="lg:col-span-5">
-                        <div className="inline-block px-3 py-1 border border-primary text-primary font-mono text-xs uppercase tracking-widest mb-8">
+                        <Link href="/company" className="inline-block px-3 py-1 border border-primary text-primary font-mono text-xs uppercase tracking-widest mb-8 hover:bg-primary hover:text-white transition-colors cursor-pointer">
                             Manifesto
-                        </div>
+                        </Link>
                         <h2 className="text-5xl md:text-6xl font-bold leading-tight uppercase mb-8">
                             Мы не просто <br />
                             <span className="text-gray-600">пишем код.</span>

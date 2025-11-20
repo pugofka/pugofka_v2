@@ -17,7 +17,11 @@ export default function Header() {
                     />
                 </Link>
 
-                <div className="hidden md:flex gap-8 font-mono text-sm text-gray-400">
+                <div className="hidden md:flex gap-8 font-mono text-sm text-gray-400 items-center">
+                    <Link href="/company" className="hover:text-primary transition-colors uppercase tracking-widest">
+                        Manifesto
+                    </Link>
+                    <div className="h-4 w-px bg-border" />
                     <span>EST. 2011</span>
                     <span>ST. PETERSBURG</span>
                 </div>

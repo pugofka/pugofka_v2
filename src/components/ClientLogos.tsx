@@ -1,8 +1,21 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import {
+    motion,
+    useScroll,
+    useSpring,
+    useTransform,
+    useMotionValue,
+    useVelocity,
+    useAnimationFrame
+} from 'framer-motion';
+
+const wrap = (min: number, max: number, v: number) => {
+    const rangeSize = max - min;
+    return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
 
 const clients = [
     {
@@ -47,6 +60,78 @@ const clients = [
     },
 ];
 
+interface ParallaxProps {
+    children: React.ReactNode;
+    baseVelocity: number;
+}
+
+function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
+    const baseX = useMotionValue(0);
+    const { scrollY } = useScroll();
+    const scrollVelocity = useVelocity(scrollY);
+    const smoothVelocity = useSpring(scrollVelocity, {
+        damping: 50,
+        stiffness: 400
+    });
+    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+        clamp: false
+    });
+
+    /**
+     * This is a magic number for the wrap function.
+     * It needs to be negative and large enough to cover the content width.
+     * Since we duplicate content 4 times, -25% to -50% is a safe range usually,
+     * but we need to experiment.
+     */
+    const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
+    const directionFactor = useRef<number>(1);
+    const isHovered = useRef(false);
+
+    useAnimationFrame((t, delta) => {
+        if (isHovered.current) return;
+
+        let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
+        /**
+         * This is what changes the direction of the scroll once we
+         * switch scrolling directions.
+         */
+        if (velocityFactor.get() < 0) {
+            directionFactor.current = -1;
+        } else if (velocityFactor.get() > 0) {
+            directionFactor.current = 1;
+        }
+
+        moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
+        baseX.set(baseX.get() + moveBy);
+    });
+
+    return (
+        <div
+            className="parallax overflow-hidden flex flex-nowrap whitespace-nowrap"
+            onMouseEnter={() => isHovered.current = true}
+            onMouseLeave={() => isHovered.current = false}
+        >
+            <motion.div className="scroller flex flex-nowrap" style={{ x }}>
+                <div className="flex flex-nowrap gap-12 md:gap-20 px-6 md:px-10">
+                    {children}
+                </div>
+                <div className="flex flex-nowrap gap-12 md:gap-20 px-6 md:px-10">
+                    {children}
+                </div>
+                <div className="flex flex-nowrap gap-12 md:gap-20 px-6 md:px-10">
+                    {children}
+                </div>
+                <div className="flex flex-nowrap gap-12 md:gap-20 px-6 md:px-10">
+                    {children}
+                </div>
+            </motion.div>
+        </div>
+    );
+}
+
 export default function ClientLogos() {
     return (
         <section className="py-24 border-b border-border bg-background overflow-hidden relative group/section">
@@ -68,20 +153,20 @@ export default function ClientLogos() {
             <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
 
-            <div className="flex flex-col gap-12 md:gap-20 relative z-0 hover:[&_*]:[animation-play-state:paused]">
-                {/* Row 1: Left */}
-                <div className="flex animate-marquee whitespace-nowrap">
-                    {[...clients, ...clients].map((client, index) => (
+            <div className="flex flex-col gap-12 md:gap-20 relative z-0">
+                {/* Row 1: Left (Base) */}
+                <ParallaxText baseVelocity={-0.5}>
+                    {clients.map((client, index) => (
                         <LogoItem key={`row1-${index}`} client={client} />
                     ))}
-                </div>
+                </ParallaxText>
 
-                {/* Row 2: Right */}
-                <div className="flex animate-marquee-reverse whitespace-nowrap">
-                    {[...clients, ...clients].map((client, index) => (
+                {/* Row 2: Right (Base) */}
+                <ParallaxText baseVelocity={0.5}>
+                    {clients.map((client, index) => (
                         <LogoItem key={`row2-${index}`} client={client} />
                     ))}
-                </div>
+                </ParallaxText>
             </div>
         </section>
     );
@@ -89,7 +174,7 @@ export default function ClientLogos() {
 
 function LogoItem({ client }: { client: typeof clients[0] }) {
     return (
-        <div className="group flex flex-col items-center justify-center gap-8 min-w-[200px] md:min-w-[300px] cursor-pointer relative mx-8 md:mx-12">
+        <div className="group flex flex-col items-center justify-center gap-8 min-w-[200px] md:min-w-[300px] cursor-pointer relative">
             {/* Hover Glow Background */}
             <div className="absolute inset-0 -z-10 bg-white/0 group-hover:bg-white/5 blur-2xl rounded-full transition-all duration-500 scale-0 group-hover:scale-150" />
 
