@@ -16,7 +16,7 @@ const cases = [
     },
     {
         id: 2,
-        title: 'Kapous Professional',
+        title: 'Интернет-магазин Kapous',
         category: 'Highload / Microservices',
         image: '/cases/kapous_web_home.png',
         year: '2024',
@@ -24,7 +24,7 @@ const cases = [
     },
     {
         id: 3,
-        title: 'Kapous Mobile',
+        title: 'Приложение Kapous',
         category: 'App / React Native',
         image: '/cases/kapous_app_catalog.png',
         year: '2024',
@@ -32,6 +32,14 @@ const cases = [
     },
     {
         id: 4,
+        title: 'Открытая школа бизнеса',
+        category: 'Education / Bitrix Framework',
+        image: '/cases/obs_preview.png',
+        year: '2024',
+        link: '/portfolio/obs'
+    },
+    {
+        id: 5,
         title: 'Logistics CRM',
         category: 'Bitrix24 / Automation',
         image: '/cases/case3.jpg', // Placeholder
