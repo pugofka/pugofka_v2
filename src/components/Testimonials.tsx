@@ -91,7 +91,7 @@ export default function Testimonials() {
                         <span className="text-primary">Клиентов</span>
                     </h2>
                     <p className="text-gray-400 max-w-lg">
-                        Официальные рекомендательные письма от лидеров рынка.
+                        Отзывы и благодарственные письма по итогам выполненных проектов.
                     </p>
                 </div>
                 <div className="flex gap-4">
