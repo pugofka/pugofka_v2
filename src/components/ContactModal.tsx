@@ -114,6 +114,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     />
                                 </div>
 
+
                                 {/* Project Types (Tags) */}
                                 <div className="space-y-2">
                                     <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
