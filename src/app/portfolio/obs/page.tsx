@@ -13,7 +13,7 @@ export default function OBSPage() {
             <Header />
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6 border-b border-border">
+            <section className="relative pt-32 pb-20 px-4 md:px-6 border-b border-border">
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function OBSPage() {
                             </span>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
+                        <h1 className="text-4xl md:text-7xl lg:text-9xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
                             Открытая школа <br />
                             <span className="text-stroke text-transparent">Бизнеса</span>
                         </h1>
@@ -312,7 +312,7 @@ export default function OBSPage() {
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-xl font-bold uppercase mb-8 text-center text-gray-500 tracking-widest">Технологии</h2>
                     <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        {["1C-Bitrix", "PHP", "HTML5/CSS3", "JavaScript", "Custom Modules", "Adaptive Layout"].map((tech, i) => (
+                        {["1С-Битрикс", "PHP", "HTML5/CSS3", "JavaScript", "Custom Modules", "Adaptive Layout"].map((tech, i) => (
                             <div key={i} className="px-6 py-3 border border-border bg-surface/10 font-mono text-sm uppercase hover:border-primary transition-colors cursor-default">
                                 {tech}
                             </div>

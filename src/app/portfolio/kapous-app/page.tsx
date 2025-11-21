@@ -24,7 +24,7 @@ export default function KapousAppPage() {
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border mb-8">
                             <Smartphone className="w-4 h-4 text-primary" />
                             <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">
-                                Mobile App / React Native
+                                Мобильное приложение / React Native
                             </span>
                         </div>
 
@@ -107,7 +107,7 @@ export default function KapousAppPage() {
                                     <div>
                                         <h4 className="text-lg font-bold uppercase text-white mb-2">Единый API</h4>
                                         <p className="text-gray-400 leading-relaxed">
-                                            Синхронизация с сайтом в реальном времени через REST API.
+                                            Синхронизация с сайтом в реальном времени через общую шину данных.
                                         </p>
                                     </div>
                                 </li>
@@ -115,11 +115,11 @@ export default function KapousAppPage() {
                         </div>
                     </div>
                     <div className="bg-surface/20 border border-border p-8">
-                        <h3 className="text-xl font-bold uppercase mb-6 text-primary">Tech Stack</h3>
+                        <h3 className="text-xl font-bold uppercase mb-6 text-primary">Стек технологий</h3>
                         <div className="space-y-6">
                             <div>
                                 <div className="flex justify-between mb-2 font-mono text-sm">
-                                    <span>Framework</span>
+                                    <span>Фреймворк</span>
                                     <span className="text-white">React Native</span>
                                 </div>
                                 <div className="h-1 bg-surface w-full overflow-hidden">
@@ -128,7 +128,7 @@ export default function KapousAppPage() {
                             </div>
                             <div>
                                 <div className="flex justify-between mb-2 font-mono text-sm">
-                                    <span>State Management</span>
+                                    <span>Управление состоянием</span>
                                     <span className="text-white">Redux Toolkit</span>
                                 </div>
                                 <div className="h-1 bg-surface w-full overflow-hidden">
@@ -146,7 +146,7 @@ export default function KapousAppPage() {
                             </div>
                             <div>
                                 <div className="flex justify-between mb-2 font-mono text-sm">
-                                    <span>Maps</span>
+                                    <span>Карты</span>
                                     <span className="text-white">Yandex Maps SDK</span>
                                 </div>
                                 <div className="h-1 bg-surface w-full overflow-hidden">

@@ -9,7 +9,7 @@ import { useUI } from '@/context/UIContext';
 export default function HeroSection() {
   const { openContact } = useUI();
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-20 border-b border-border">
+    <section className="relative min-h-screen flex flex-col justify-center pt-20 pb-32 border-b border-border">
       {/* Industrial Grid Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:4rem_4rem]" />

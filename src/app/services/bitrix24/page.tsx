@@ -61,7 +61,7 @@ export default function BitrixPage() {
             {/* 2. Visual: The Process (Kanban Abstraction) */}
             <section className="py-24 border-b border-border bg-surface/30">
                 <div className="container mx-auto px-4">
-                    <div className="mb-16 flex flex-col md:flex-row justify-between items-end">
+                    <div className="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end">
                         <div>
                             <h2 className="text-3xl font-bold uppercase mb-4">Как мы работаем</h2>
                             <p className="text-gray-400">От аудита процессов до обучения сотрудников</p>

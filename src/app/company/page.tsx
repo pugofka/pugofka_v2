@@ -31,7 +31,7 @@ export default function CompanyPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-5xl md:text-7xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.9] mb-12"
+                            className="text-4xl md:text-7xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.9] mb-12"
                         >
                             МЫ СТРОИМ <br />
                             <span className="text-transparent text-stroke">ЦИФРОВЫЕ</span> <br />
@@ -64,7 +64,7 @@ export default function CompanyPage() {
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
                         <div className="sticky top-32 h-fit">
-                            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-8">
+                            <h2 className="text-3xl md:text-6xl font-bold uppercase tracking-tighter mb-8">
                                 ФИЛОСОФИЯ <br />
                                 <span className="text-primary">NO BULLSHIT</span>
                             </h2>
@@ -122,7 +122,7 @@ export default function CompanyPage() {
             <section className="py-32 border-b border-border bg-surface overflow-hidden">
                 <div className="container mx-auto px-6">
                     <div className="mb-20">
-                        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter mb-6">
+                        <h2 className="text-3xl md:text-6xl font-bold uppercase tracking-tighter mb-6">
                             ПРОИЗВОДСТВЕННАЯ <br />
                             <span className="text-transparent text-stroke">ЛИНИЯ</span>
                         </h2>
@@ -168,7 +168,7 @@ export default function CompanyPage() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
-                    <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8">
+                    <h2 className="text-3xl md:text-7xl font-black uppercase tracking-tighter mb-8">
                         ГОТОВЫ К ЗАПУСКУ?
                     </h2>
                     <p className="text-xl md:text-2xl text-white/80 font-mono mb-12 max-w-2xl mx-auto">

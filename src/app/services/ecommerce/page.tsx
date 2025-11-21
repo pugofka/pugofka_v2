@@ -30,8 +30,8 @@ export default function EcommercePage() {
                         </div>
                         <div className="max-w-lg mb-2">
                             <p className="text-xl text-gray-400 leading-relaxed">
-                                Разрабатываем масштабируемые интернет-магазины.
-                                От быстрых решений на 1С-Битрикс до High-load микросервисов на Laravel и Go.
+                                Разрабатываем High-load интернет-магазины.
+                                Строим надежные и масштабируемые системы на 1С-Битрикс, Laravel и Go.
                             </p>
                         </div>
                     </div>
@@ -39,9 +39,9 @@ export default function EcommercePage() {
                     {/* Business Metrics Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-4 border-t border-border">
                         {[
-                            { label: 'Заказов в сутки', value: '300+' },
+                            { label: 'Заказов в сутки', value: '5000+' },
                             { label: 'Отказоустойчивость', value: '99.9%' },
-                            { label: 'Товаров в каталоге', value: '2M+' },
+                            { label: 'Товаров в каталоге', value: '8M+' },
                             { label: 'Скорость загрузки', value: '<0.5s' },
                         ].map((item, i) => (
                             <div key={i} className="p-8 border-r border-border last:border-r-0 hover:bg-surface transition-colors">
@@ -65,8 +65,8 @@ export default function EcommercePage() {
                             </p>
                             <ul className="space-y-2 text-sm text-gray-500 font-mono">
                                 <li>• High-load архитектура</li>
-                                <li>• Микросервисы (Go/Laravel)</li>
-                                <li>• Enterprise на Битрикс</li>
+                                <li>• Стек: Laravel / Go / Bitrix</li>
+                                <li>• Отказоустойчивые решения</li>
                             </ul>
                         </div>
                         <div>
@@ -76,7 +76,8 @@ export default function EcommercePage() {
                                 обновляются автоматически в реальном времени.
                             </p>
                             <ul className="space-y-2 text-sm text-gray-500 font-mono">
-                                <li>• 1С:Предприятие / ERP</li>
+                                <li>• 1С:Предприятие / SAP / ERP</li>
+                                <li>• CRM и CDP платформы</li>
                                 <li>• Службы доставки</li>
                                 <li>• Платежные шлюзы</li>
                             </ul>
@@ -193,11 +194,11 @@ export default function EcommercePage() {
             {/* 4. Tech Stack (Simplified) */}
             <section className="py-24 border-b border-border">
                 <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6 md:gap-0">
                         <h2 className="text-4xl font-bold uppercase leading-tight">
                             Надежные <br /> Технологии
                         </h2>
-                        <p className="text-gray-400 max-w-md text-right">
+                        <p className="text-gray-400 max-w-md text-left md:text-right">
                             Используем современные инструменты, чтобы ваш бизнес работал стабильно.
                         </p>
                     </div>
@@ -206,12 +207,12 @@ export default function EcommercePage() {
                         <div className="bg-background p-8 hover:bg-surface transition-colors">
                             <h4 className="font-mono text-xs text-gray-500 uppercase mb-4">Платформа</h4>
                             <div className="text-xl font-bold text-white">1С-Битрикс</div>
-                            <div className="text-sm text-gray-400 mt-2">Лидер рынка E-com в РФ</div>
+                            <div className="text-sm text-gray-400 mt-2">Мощная E-com платформа</div>
                         </div>
                         <div className="bg-background p-8 hover:bg-surface transition-colors">
                             <h4 className="font-mono text-xs text-gray-500 uppercase mb-4">Фреймворки</h4>
                             <div className="text-xl font-bold text-white">Laravel / Go</div>
-                            <div className="text-sm text-gray-400 mt-2">Для сложных задач</div>
+                            <div className="text-sm text-gray-400 mt-2">High-load и Микросервисы</div>
                         </div>
                         <div className="bg-background p-8 hover:bg-surface transition-colors">
                             <h4 className="font-mono text-xs text-gray-500 uppercase mb-4">Frontend</h4>

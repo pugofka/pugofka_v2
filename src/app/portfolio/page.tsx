@@ -17,27 +17,19 @@ const cases = [
     },
     {
         id: 2,
-        title: 'Kapous Professional',
-        category: 'Highload / Microservices',
+        title: 'сайт Kapous',
+        category: 'Highload / Microservices / Bitrix',
         image: '/cases/kapous_web_home.png',
         year: '2024',
         link: '/portfolio/kapous-web'
     },
     {
         id: 3,
-        title: 'Kapous Mobile',
+        title: 'Мобильное приложение Kapous',
         category: 'App / React Native',
         image: '/cases/kapous_app_catalog.png',
         year: '2024',
         link: '/portfolio/kapous-app'
-    },
-    {
-        id: 4,
-        title: 'Logistics CRM',
-        category: 'Bitrix24 / Automation',
-        image: '/cases/case3.jpg', // Placeholder
-        year: '2024',
-        link: '#'
     }
 ];
 

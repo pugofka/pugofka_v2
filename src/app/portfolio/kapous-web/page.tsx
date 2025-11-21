@@ -30,7 +30,7 @@ export default function KapousWebPage() {
 
                         <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold uppercase tracking-tighter mb-8 leading-[0.9]">
                             Kapous <br />
-                            <span className="text-stroke text-transparent">Professional</span>
+                            <span className="text-stroke text-transparent">.ru</span>
                         </h1>
 
                         <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-12">
@@ -67,8 +67,8 @@ export default function KapousWebPage() {
                         </h2>
                         <div className="prose prose-invert prose-lg text-gray-400">
                             <p>
-                                Kapous — это не просто магазин, а платформа для работы тысяч салонов красоты и дистрибьюторов по всей стране.
-                                Проект находится на поддержке более 9 лет, постоянно эволюционируя от монолита к сервисной архитектуре.
+                                Kapous — это ведущий бренд косметики с базой в сотни тысяч клиентов.
+                                Продукцией пользуются как обычные покупатели, так и частные мастера, салоны красоты и дистрибьюторы по всей стране.
                             </p>
                             <p>
                                 Ключевые особенности:
@@ -80,11 +80,15 @@ export default function KapousWebPage() {
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <ArrowRight className="w-4 h-4 text-primary" />
-                                    9 независимых микросервисов для отказоустойчивости.
+                                    Независимые микросервисы для отказоустойчивости.
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <ArrowRight className="w-4 h-4 text-primary" />
                                     Сложная кастомная интеграция с 1С (обмен заказами, остатками, контрагентами).
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <ArrowRight className="w-4 h-4 text-primary" />
+                                    Мобильное приложение для iOS и Android.
                                 </li>
                             </ul>
                         </div>
@@ -97,18 +101,18 @@ export default function KapousWebPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div className="p-6 border border-border bg-surface/20">
                                 <Server className="w-8 h-8 text-primary mb-4" />
-                                <h4 className="font-bold uppercase mb-2">Microservices</h4>
-                                <p className="text-sm text-gray-400">Выделенные сервисы для чекаута, поиска и интеграций.</p>
+                                <h4 className="font-bold uppercase mb-2">Микросервисы</h4>
+                                <p className="text-sm text-gray-400">Битрикс и выделенные сервисы для чекаута, поиска и интеграций с логистикой.</p>
                             </div>
                             <div className="p-6 border border-border bg-surface/20">
                                 <Database className="w-8 h-8 text-primary mb-4" />
                                 <h4 className="font-bold uppercase mb-2">ElasticSearch</h4>
-                                <p className="text-sm text-gray-400">Мгновенный поиск по тысячам SKU с учетом морфологии.</p>
+                                <p className="text-sm text-gray-400">Мгновенный поиск по тысячам SKU с учетом морфологии, фасетные фильтры</p>
                             </div>
                             <div className="p-6 border border-border bg-surface/20">
                                 <Users className="w-8 h-8 text-primary mb-4" />
-                                <h4 className="font-bold uppercase mb-2">B2B Cabinet</h4>
-                                <p className="text-sm text-gray-400">Персональные условия, оптовые прайс-листы, документооборот.</p>
+                                <h4 className="font-bold uppercase mb-2">B2B Кабинет</h4>
+                                <p className="text-sm text-gray-400">Персональные условия, оптовые прайс-листы.</p>
                             </div>
                             <div className="p-6 border border-border bg-surface/20">
                                 <Zap className="w-8 h-8 text-primary mb-4" />
@@ -133,7 +137,7 @@ export default function KapousWebPage() {
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
-                                Smart Catalog
+                                Умный каталог
                             </div>
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
@@ -144,7 +148,7 @@ export default function KapousWebPage() {
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
-                                Partners Section
+                                Раздел партнеров
                             </div>
                         </div>
                     </div>
@@ -154,9 +158,9 @@ export default function KapousWebPage() {
             {/* Tech Stack List */}
             <section className="py-24 px-6 border-b border-border">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-xl font-bold uppercase mb-8 text-center text-gray-500 tracking-widest">Technology Stack</h2>
+                    <h2 className="text-xl font-bold uppercase mb-8 text-center text-gray-500 tracking-widest">Стек технологий</h2>
                     <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        {["1C-Bitrix", "PHP 8.2", "PostgreSQL", "ElasticSearch", "Redis", "Docker", "GitLab CI", "RabbitMQ"].map((tech, i) => (
+                        {["1С-Битрикс", "PHP 8.4", "MySQL", "ElasticSearch", "Redis", "Docker", "Laravel", "Go", "NodeJs"].map((tech, i) => (
                             <div key={i} className="px-6 py-3 border border-border bg-surface/10 font-mono text-sm uppercase hover:border-primary transition-colors cursor-default">
                                 {tech}
                             </div>

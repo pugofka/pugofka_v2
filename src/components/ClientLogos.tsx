@@ -54,7 +54,7 @@ const clients = [
         category: "Partner",
     },
     {
-        name: "1C-Bitrix",
+        name: "1С-Битрикс",
         logo: "/clients/1c-bitrix.svg",
         category: "Partner",
     },

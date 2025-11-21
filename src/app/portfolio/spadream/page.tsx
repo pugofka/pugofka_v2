@@ -34,7 +34,7 @@ export default function SpaDreamPage() {
 
                         <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-12">
                             Премиальный интернет-магазин косметики.
-                            Скорость загрузки менее 1 секунды, персонализация и глубокая интеграция с 1С.
+                            Скорость загрузки сотни миллисекунд и умная персонализация.
                         </p>
                     </motion.div>
                 </div>
@@ -84,7 +84,7 @@ export default function SpaDreamPage() {
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <ArrowRight className="w-4 h-4 text-primary" />
-                                    Интеграция со складом и службами доставки.
+                                    Интеграция со службами доставки.
                                 </li>
                             </ul>
                         </div>
@@ -100,7 +100,7 @@ export default function SpaDreamPage() {
                                 Реализовали технологию «Композитный сайт» для мгновенной отдачи контента.
                             </p>
                             <p>
-                                Вдрили умный поиск на базе ElasticSearch, который понимает опечатки и синонимы.
+                                Внедрили умный поиск.
                                 Разработали систему персональных рекомендаций, увеличившую средний чек.
                             </p>
                         </div>
@@ -121,7 +121,7 @@ export default function SpaDreamPage() {
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
-                                Catalog
+                                Каталог
                             </div>
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
@@ -132,7 +132,7 @@ export default function SpaDreamPage() {
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
-                                Product Card
+                                Карточка товара
                             </div>
                         </div>
                     </div>
@@ -145,30 +145,28 @@ export default function SpaDreamPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
                         <div className="p-8 border border-border bg-surface/20">
                             <Layers className="w-8 h-8 text-primary mb-6" />
-                            <h3 className="text-xl font-bold uppercase mb-4">Tech Stack</h3>
+                            <h3 className="text-xl font-bold uppercase mb-4">Стек технологий</h3>
                             <ul className="space-y-2 font-mono text-sm text-gray-400">
-                                <li>1C-Bitrix: Business</li>
-                                <li>Vue.js Components</li>
-                                <li>ElasticSearch</li>
-                                <li>Redis Caching</li>
+                                <li>1С-Битрикс</li>
+                                <li>Laravel</li>
+                                <li>Caching</li>
                             </ul>
                         </div>
                         <div className="p-8 border border-border bg-surface/20">
                             <Zap className="w-8 h-8 text-primary mb-6" />
-                            <h3 className="text-xl font-bold uppercase mb-4">Performance</h3>
+                            <h3 className="text-xl font-bold uppercase mb-4">Производительность</h3>
                             <ul className="space-y-2 font-mono text-sm text-gray-400">
-                                <li>Load Time: 0.8s</li>
+                                <li>Загрузка: 0.8s</li>
                                 <li>Google PageSpeed: 90+</li>
                                 <li>Uptime: 99.9%</li>
                             </ul>
                         </div>
                         <div className="p-8 border border-border bg-surface/20">
                             <CheckCircle className="w-8 h-8 text-primary mb-6" />
-                            <h3 className="text-xl font-bold uppercase mb-4">Integrations</h3>
+                            <h3 className="text-xl font-bold uppercase mb-4">Интеграции</h3>
                             <ul className="space-y-2 font-mono text-sm text-gray-400">
-                                <li>1C: Enterprise</li>
-                                <li>Payment Gateways</li>
-                                <li>Delivery Services</li>
+                                <li>Платежные шлюзы</li>
+                                <li>Службы доставки</li>
                                 <li>SMS / Email</li>
                             </ul>
                         </div>

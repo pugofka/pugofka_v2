@@ -6,52 +6,41 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const cases = [
+
     {
         id: 1,
-        title: 'SpaDream',
-        category: 'E-commerce / Bitrix',
-        image: '/cases/spadream_preview.png',
-        year: '2024',
-        link: '/portfolio/spadream'
-    },
-    {
-        id: 2,
         title: 'Интернет-магазин Kapous',
         category: 'Highload / Microservices',
         image: '/cases/kapous_web_home.png',
-        year: '2024',
         link: '/portfolio/kapous-web'
     },
     {
-        id: 3,
+        id: 2,
         title: 'Приложение Kapous',
         category: 'App / React Native',
         image: '/cases/kapous_app_catalog.png',
-        year: '2024',
         link: '/portfolio/kapous-app'
+    },
+    {
+        id: 3,
+        title: 'SpaDream',
+        category: 'E-commerce / Bitrix',
+        image: '/cases/spadream_preview.png',
+        link: '/portfolio/spadream'
     },
     {
         id: 4,
         title: 'Открытая школа бизнеса',
         category: 'Education / Bitrix Framework',
         image: '/cases/obs_preview.png',
-        year: '2024',
         link: '/portfolio/obs'
-    },
-    {
-        id: 5,
-        title: 'Logistics CRM',
-        category: 'Bitrix24 / Automation',
-        image: '/cases/case3.jpg', // Placeholder
-        year: '2024',
-        link: '#'
     }
 ];
 
 export default function CasesGrid() {
     return (
         <section className="py-32 bg-background border-b border-border">
-            <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
                 <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/30 text-primary text-xs font-mono uppercase tracking-widest mb-4">
                         Selected Works
@@ -76,7 +65,7 @@ export default function CasesGrid() {
                             className="h-full w-full relative"
                         >
                             {/* Custom Preview for Mobile App */}
-                            {item.id === 3 ? (
+                            {item.id === 2 ? (
                                 <div className="absolute inset-0 flex items-center justify-center gap-2 bg-zinc-900 p-8 group-hover:scale-105 transition-transform duration-700">
                                     <div className="relative w-[30%] aspect-[9/19.5] rounded-xl overflow-hidden border-2 border-zinc-700 shadow-xl translate-y-4 opacity-60 group-hover:opacity-80 transition-opacity">
                                         <Image src="/cases/kapous_app_filters.png" alt="Filters" fill className="object-cover" />
@@ -110,7 +99,7 @@ export default function CasesGrid() {
                             {/* Content Overlay */}
                             <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between z-20">
                                 <div className="flex justify-between items-start">
-                                    <span className="font-mono text-sm text-gray-300 drop-shadow-md">{item.year}</span>
+                                    <span className="font-mono text-sm text-gray-300 drop-shadow-md"></span>
                                     <ArrowUpRight className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 drop-shadow-md" />
                                 </div>
 

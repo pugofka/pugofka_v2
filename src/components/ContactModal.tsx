@@ -128,8 +128,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                                     type="button"
                                                     onClick={() => toggleType(type)}
                                                     className={`px-3 py-2 text-xs font-mono transition-all border ${isSelected
-                                                            ? 'bg-primary border-primary text-white'
-                                                            : 'bg-surface/50 border-transparent text-gray-400 hover:border-gray-600'
+                                                        ? 'bg-primary border-primary text-white'
+                                                        : 'bg-surface/50 border-transparent text-gray-400 hover:border-gray-600'
                                                         }`}
                                                 >
                                                     {type}
