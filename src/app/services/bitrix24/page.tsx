@@ -25,7 +25,7 @@ export default function BitrixPage() {
                         </div>
                         <div className="max-w-lg mb-2">
                             <p className="text-xl text-gray-400 leading-relaxed">
-                                Превращаем хаос в систему. Внедряем Битрикс24, настраиваем воронки продаж
+                                Превращаем хаос в систему. Внедряем Битрикс24 (Облако и Коробка), настраиваем воронки продаж
                                 и делаем бизнес прозрачным и управляемым.
                             </p>
                         </div>
@@ -81,7 +81,7 @@ export default function BitrixPage() {
                                 Разбираем ваши процессы по косточкам. Кто, кому и когда звонит. Где теряются деньги.
                             </p>
                             <ul className="space-y-2 text-xs font-mono text-gray-500">
-                                <li>• Интервью с РОП</li>
+
                                 <li>• Карта процессов</li>
                             </ul>
                         </div>
@@ -124,7 +124,7 @@ export default function BitrixPage() {
                             </p>
                             <ul className="space-y-2 text-xs font-mono text-gray-500">
                                 <li>• Видео-инструкции</li>
-                                <li>• Поддержка 1 месяц</li>
+
                             </ul>
                         </div>
                     </div>
@@ -169,7 +169,7 @@ export default function BitrixPage() {
                             <div>
                                 <h3 className="text-xl font-bold uppercase mb-2">Отчеты BI</h3>
                                 <p className="text-gray-400 text-sm">
-                                    Строим дашборды в DataLens или PowerBI. Визуализация ключевых показателей бизнеса.
+                                    Строим наглядные дашборды. Визуализация ключевых показателей бизнеса.
                                 </p>
                             </div>
                         </div>

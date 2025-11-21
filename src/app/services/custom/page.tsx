@@ -36,8 +36,8 @@ export default function CustomDevPage() {
 
                         <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-12">
                             Разрабатываем сложные бэкенд-системы, API и микросервисы.
-                            Пишем код, который выдерживает нагрузки и легко масштабируется.
-                            Никакого легаси, только современные стандарты.
+                            Решаем нетривиальные задачи, где коробочные решения не справляются.
+                            Проектируем архитектуру под высокие нагрузки.
                         </p>
 
                         <div className="flex flex-wrap gap-4">
@@ -129,21 +129,30 @@ export default function CustomDevPage() {
                         <div className="space-y-2 text-gray-500">
                             <div className="flex gap-4 text-gray-600 border-b border-border pb-4 mb-4">
                                 <span>main.go</span>
-                                <span>service.go</span>
-                                <span className="text-primary">handler.go</span>
+                                <span>worker.go</span>
+                                <span className="text-primary">server.go</span>
                             </div>
-                            <p><span className="text-purple-400">package</span> main</p>
-                            <p>&nbsp;</p>
-                            <p><span className="text-purple-400">import</span> (</p>
-                            <p>&nbsp;&nbsp;"fmt"</p>
-                            <p>&nbsp;&nbsp;"net/http"</p>
-                            <p>)</p>
-                            <p>&nbsp;</p>
                             <p><span className="text-purple-400">func</span> <span className="text-blue-400">main</span>() {`{`}</p>
-                            <p>&nbsp;&nbsp;<span className="text-green-400">// High-performance handler</span></p>
-                            <p>&nbsp;&nbsp;http.HandleFunc(<span className="text-yellow-300">"/api/v1/process"</span>, handler)</p>
-                            <p>&nbsp;&nbsp;fmt.Println(<span className="text-yellow-300">"Server started at :8080"</span>)</p>
-                            <p>&nbsp;&nbsp;http.ListenAndServe(<span className="text-yellow-300">":8080"</span>, nil)</p>
+                            <p>&nbsp;&nbsp;<span className="text-green-400">// 1. Structured Logging (JSON)</span></p>
+                            <p>&nbsp;&nbsp;logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))</p>
+                            <p>&nbsp;</p>
+                            <p>&nbsp;&nbsp;<span className="text-green-400">// 2. Graceful Shutdown Context</span></p>
+                            <p>&nbsp;&nbsp;ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT)</p>
+                            <p>&nbsp;&nbsp;<span className="text-purple-400">defer</span> stop()</p>
+                            <p>&nbsp;</p>
+                            <p>&nbsp;&nbsp;<span className="text-green-400">// 3. Production Server with Timeouts</span></p>
+                            <p>&nbsp;&nbsp;srv := &http.Server{`{`}</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Addr: <span className="text-yellow-300">":8080"</span>,</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;ReadTimeout: 5 * time.Second,</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;WriteTimeout: 10 * time.Second,</p>
+                            <p>&nbsp;&nbsp;{`}`}</p>
+                            <p>&nbsp;</p>
+                            <p>&nbsp;&nbsp;<span className="text-purple-400">go</span> <span className="text-purple-400">func</span>() {`{`}</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;logger.Info(<span className="text-yellow-300">"starting high-load node"</span>, <span className="text-yellow-300">"port"</span>, 8080)</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;srv.ListenAndServe()</p>
+                            <p>&nbsp;&nbsp;{`}`}()</p>
+                            <p>&nbsp;</p>
+                            <p>&nbsp;&nbsp;&lt;-ctx.Done() <span className="text-green-400">// Wait for signal</span></p>
                             <p>{`}`}</p>
                         </div>
 
@@ -157,14 +166,13 @@ export default function CustomDevPage() {
             <section className="py-24 bg-surface/20 border-b border-border">
                 <div className="max-w-7xl mx-auto px-6 text-center">
                     <h2 className="text-3xl font-bold uppercase mb-16">Инфраструктура данных</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         {[
-                            { name: "PostgreSQL", label: "Relational DB" },
-                            { name: "MySQL", label: "Relational DB" },
+                            { name: "Postgres / MySQL", label: "Relational DB" },
                             { name: "ClickHouse", label: "Analytics" },
                             { name: "Redis", label: "Cache / Queues" },
+                            { name: "Apache Kafka", label: "Message Broker" },
                             { name: "Cassandra", label: "NoSQL" },
-                            { name: "YugabyteDB", label: "Distributed SQL" },
                             { name: "Docker", label: "Containerization" }
                         ].map((tech, i) => (
                             <div key={i} className="flex flex-col items-center justify-center p-6 border border-border hover:border-primary transition-colors bg-background">

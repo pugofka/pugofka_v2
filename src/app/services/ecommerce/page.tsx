@@ -22,11 +22,16 @@ export default function EcommercePage() {
                                 Интернет <br />
                                 <span className="text-stroke">Магазины</span>
                             </h1>
+                            <div className="flex gap-4 text-sm font-mono text-primary mb-6">
+                                <span>// LARAVEL</span>
+                                <span>// GO</span>
+                                <span>// BITRIX</span>
+                            </div>
                         </div>
                         <div className="max-w-lg mb-2">
                             <p className="text-xl text-gray-400 leading-relaxed">
-                                Разрабатываем современные интернет-магазины, которые продают.
-                                От проектирования до технической поддержки. Надежно, быстро, с гарантией.
+                                Разрабатываем масштабируемые интернет-магазины.
+                                От быстрых решений на 1С-Битрикс до High-load микросервисов на Laravel и Go.
                             </p>
                         </div>
                     </div>
@@ -59,9 +64,9 @@ export default function EcommercePage() {
                                 личные кабинеты и программы лояльности.
                             </p>
                             <ul className="space-y-2 text-sm text-gray-500 font-mono">
-                                <li>• UX/UI Проектирование</li>
-                                <li>• Верстка и Программирование</li>
-                                <li>• Запуск MVP за 2-3 месяца</li>
+                                <li>• High-load архитектура</li>
+                                <li>• Микросервисы (Go/Laravel)</li>
+                                <li>• Enterprise на Битрикс</li>
                             </ul>
                         </div>
                         <div>
@@ -72,15 +77,15 @@ export default function EcommercePage() {
                             </p>
                             <ul className="space-y-2 text-sm text-gray-500 font-mono">
                                 <li>• 1С:Предприятие / ERP</li>
-                                <li>• Платежные системы</li>
                                 <li>• Службы доставки</li>
+                                <li>• Платежные шлюзы</li>
                             </ul>
                         </div>
                         <div>
                             <h3 className="text-2xl font-bold uppercase mb-4 text-primary">03. Поддержка</h3>
                             <p className="text-gray-400 mb-4">
                                 Не бросаем после запуска. Обеспечиваем стабильную работу,
-                                развиваем функционал и следим за серверами 24/7.
+                                развиваем функционал и следим за серверами.
                             </p>
                             <ul className="space-y-2 text-sm text-gray-500 font-mono">
                                 <li>• SLA и Гарантия</li>
@@ -108,7 +113,7 @@ export default function EcommercePage() {
                                 <Database className="w-8 h-8 text-gray-500" />
                                 <span className="font-mono text-xs text-gray-600">СКЛАД И УЧЕТ</span>
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">1С / ERP</h3>
+                            <h3 className="text-2xl font-bold mb-4">1С / ERP / SAP</h3>
                             <p className="text-sm text-gray-400 mb-4">
                                 Ваша основная система учета. Мы не ломаем процессы, а встраиваемся в них.
                             </p>
@@ -117,7 +122,7 @@ export default function EcommercePage() {
                                     Товары и Цены
                                 </div>
                                 <div className="p-2 bg-surface border border-border text-xs font-mono text-gray-400">
-                                    Статусы Заказов
+                                    Заказы и Контрагенты
                                 </div>
                             </div>
 
@@ -172,12 +177,12 @@ export default function EcommercePage() {
                             </p>
                             <div className="space-y-2">
                                 <div className="p-2 bg-surface border border-border text-xs font-mono text-gray-400 flex justify-between">
-                                    <span>Desktop</span>
-                                    <span className="text-white">Удобно</span>
+                                    <span>Web Platform</span>
+                                    <span className="text-white">Adaptive</span>
                                 </div>
                                 <div className="p-2 bg-surface border border-border text-xs font-mono text-gray-400 flex justify-between">
-                                    <span>Mobile</span>
-                                    <span className="text-white">Быстро</span>
+                                    <span>Mobile App</span>
+                                    <span className="text-white">iOS / Android</span>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +220,7 @@ export default function EcommercePage() {
                         </div>
                         <div className="bg-background p-8 hover:bg-surface transition-colors">
                             <h4 className="font-mono text-xs text-gray-500 uppercase mb-4">Данные</h4>
-                            <div className="text-xl font-bold text-white">PostgreSQL</div>
+                            <div className="text-xl font-bold text-white">PostgreSQL / MySQL</div>
                             <div className="text-sm text-gray-400 mt-2">Надежное хранение</div>
                         </div>
                     </div>
@@ -231,6 +236,6 @@ export default function EcommercePage() {
                     </button>
                 </div>
             </section>
-        </main>
+        </main >
     );
 }

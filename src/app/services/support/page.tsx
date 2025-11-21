@@ -36,13 +36,13 @@ export default function SupportPage() {
                         </h1>
 
                         <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-12">
-                            Мы не бросаем проекты после запуска. Обеспечиваем стабильную работу,
-                            мониторинг 24/7 и развитие функционала. Берем на поддержку чужой легаси-код.
+                            Мы не бросаем проекты после запуска. Поддерживаем то, что создали сами,
+                            и берем на обслуживание чужой код. Мониторинг и развитие функционала.
                         </p>
 
                         <div className="flex flex-wrap gap-4">
                             <button onClick={openContact} className="bg-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-red-600 transition-colors flex items-center gap-2">
-                                Взять на поддержку <ArrowRight className="w-5 h-5" />
+                                Обсудить поддержку <ArrowRight className="w-5 h-5" />
                             </button>
                         </div>
                     </motion.div>
@@ -56,12 +56,12 @@ export default function SupportPage() {
                         {
                             icon: Clock,
                             title: "SLA & Monitoring",
-                            desc: "Гарантированное время реакции. Мониторинг доступности и производительности 24/7."
+                            desc: "Гарантированное время реакции. Мониторинг доступности и производительности."
                         },
                         {
                             icon: RefreshCw,
-                            title: "Legacy Refactoring",
-                            desc: "Аудит и постепенное обновление старого кода. Переезд на новые версии PHP/Laravel/Bitrix."
+                            title: "Миграция на современный стек",
+                            desc: "Переводим проекты на актуальные технологии для ускорения разработки и снижения стоимости поддержки."
                         },
                         {
                             icon: Server,
@@ -92,7 +92,7 @@ export default function SupportPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
                             { name: "Task Tracker", label: "Прозрачность задач" },
-                            { name: "SLA 24/7", label: "Гарантия реакции" },
+                            { name: "SLA", label: "Гарантия реакции" },
                             { name: "Monitoring", label: "Контроль доступности" },
                             { name: "Planning", label: "Планирование ресурсов" },
                             { name: "Backups", label: "Сохранность данных" },

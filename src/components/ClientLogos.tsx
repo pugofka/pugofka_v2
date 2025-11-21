@@ -73,7 +73,7 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
         damping: 50,
         stiffness: 400
     });
-    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    const velocityFactor = useTransform(smoothVelocity, [0, 1500], [0, 2.5], {
         clamp: false
     });
 
@@ -155,14 +155,14 @@ export default function ClientLogos() {
 
             <div className="flex flex-col gap-12 md:gap-20 relative z-0">
                 {/* Row 1: Left (Base) */}
-                <ParallaxText baseVelocity={-0.5}>
+                <ParallaxText baseVelocity={-0.4}>
                     {clients.map((client, index) => (
                         <LogoItem key={`row1-${index}`} client={client} />
                     ))}
                 </ParallaxText>
 
                 {/* Row 2: Right (Base) */}
-                <ParallaxText baseVelocity={0.5}>
+                <ParallaxText baseVelocity={0.4}>
                     {clients.map((client, index) => (
                         <LogoItem key={`row2-${index}`} client={client} />
                     ))}

@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send } from 'lucide-react';
+import { X, Send, Paperclip, Check } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
 interface ContactModalProps {
@@ -10,8 +10,20 @@ interface ContactModalProps {
     onClose: () => void;
 }
 
+const PROJECT_TYPES = [
+    'Интернет-магазин',
+    'Корпоративный сайт',
+    'Стартап / MVP',
+    'Внедрение CRM',
+    'Поддержка',
+    'Другое'
+];
+
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     const [mounted, setMounted] = useState(false);
+    const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+    const [file, setFile] = useState<File | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         setMounted(true);
@@ -24,6 +36,20 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
+
+    const toggleType = (type: string) => {
+        setSelectedTypes(prev =>
+            prev.includes(type)
+                ? prev.filter(t => t !== type)
+                : [...prev, type]
+        );
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setFile(e.target.files[0]);
+        }
+    };
 
     if (!mounted) return null;
 
@@ -46,10 +72,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-                        className="fixed inset-y-0 right-0 w-full md:w-[600px] bg-background border-l border-border z-[70] p-6 md:p-12 overflow-y-auto"
+                        className="fixed inset-y-0 right-0 w-full md:w-[600px] bg-background border-l border-border z-[70] flex flex-col"
                     >
-                        <div className="flex justify-between items-center mb-12">
-                            <h2 className="text-3xl font-bold uppercase tracking-tighter">
+                        {/* Header */}
+                        <div className="p-6 md:p-8 pb-6 flex justify-between items-center border-b border-border/50 shrink-0">
+                            <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter">
                                 Начать проект
                             </h2>
                             <button
@@ -60,65 +87,106 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             </button>
                         </div>
 
-                        <form className="space-y-8">
-                            <div className="space-y-2">
-                                <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                                    Имя / Компания
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="ИВАН ИВАНОВ / ООО РОМАШКА"
-                                    className="w-full bg-surface border-b border-border p-4 text-lg focus:border-primary focus:outline-none transition-colors placeholder:text-muted-foreground/30"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                                    Контакты (Email / Telegram)
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="@USERNAME ИЛИ EMAIL"
-                                    className="w-full bg-surface border-b border-border p-4 text-lg focus:border-primary focus:outline-none transition-colors placeholder:text-muted-foreground/30"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                                    Тип проекта
-                                </label>
-                                <div className="grid grid-cols-2 gap-4">
-                                    {['Интернет-магазин', 'Корпоративный сайт', 'Стартап / MVP', 'Битрикс24', 'Поддержка', 'Другое'].map((type) => (
-                                        <label key={type} className="flex items-center gap-3 cursor-pointer group">
-                                            <input type="checkbox" className="w-4 h-4 accent-primary bg-surface border-border" />
-                                            <span className="font-mono text-sm group-hover:text-primary transition-colors">{type}</span>
-                                        </label>
-                                    ))}
+                        {/* Scrollable Content */}
+                        <div className="flex-1 overflow-y-auto p-6 md:p-8 pt-6">
+                            <form className="space-y-6">
+                                {/* Name */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                                        Имя / Компания
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="ИВАН ИВАНОВ / ООО РОМАШКА"
+                                        className="w-full bg-surface/50 border border-transparent focus:border-primary p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none"
+                                    />
                                 </div>
-                            </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-                                    Краткое описание
-                                </label>
-                                <textarea
-                                    rows={4}
-                                    placeholder="РАССКАЖИТЕ О ВАШИХ ЗАДАЧАХ..."
-                                    className="w-full bg-surface border-b border-border p-4 text-lg focus:border-primary focus:outline-none transition-colors placeholder:text-muted-foreground/30 resize-none"
-                                />
-                            </div>
+                                {/* Contacts */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                                        Контакты
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="TELEGRAM / WHATSAPP / EMAIL"
+                                        className="w-full bg-surface/50 border border-transparent focus:border-primary p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none"
+                                    />
+                                </div>
 
+                                {/* Project Types (Tags) */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                                        Тип проекта
+                                    </label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {PROJECT_TYPES.map((type) => {
+                                            const isSelected = selectedTypes.includes(type);
+                                            return (
+                                                <button
+                                                    key={type}
+                                                    type="button"
+                                                    onClick={() => toggleType(type)}
+                                                    className={`px-3 py-2 text-xs font-mono transition-all border ${isSelected
+                                                            ? 'bg-primary border-primary text-white'
+                                                            : 'bg-surface/50 border-transparent text-gray-400 hover:border-gray-600'
+                                                        }`}
+                                                >
+                                                    {type}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                {/* Description */}
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                                        О задаче
+                                    </label>
+                                    <textarea
+                                        rows={3}
+                                        placeholder="РАССКАЖИТЕ О ВАШИХ ЦЕЛЯХ..."
+                                        className="w-full bg-surface/50 border border-transparent focus:border-primary p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none resize-none"
+                                    />
+                                </div>
+
+                                {/* File Attachment */}
+                                <div>
+                                    <input
+                                        type="file"
+                                        ref={fileInputRef}
+                                        onChange={handleFileChange}
+                                        className="hidden"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => fileInputRef.current?.click()}
+                                        className="flex items-center gap-3 text-xs text-gray-400 hover:text-white transition-colors group"
+                                    >
+                                        <div className="w-8 h-8 rounded-full bg-surface/50 flex items-center justify-center group-hover:bg-surface transition-colors">
+                                            {file ? <Check className="w-4 h-4 text-green-500" /> : <Paperclip className="w-4 h-4" />}
+                                        </div>
+                                        <span className="border-b border-dashed border-gray-600 group-hover:border-white pb-0.5">
+                                            {file ? file.name : 'Прикрепить бриф или ТЗ'}
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        {/* Footer / Submit */}
+                        <div className="p-6 md:p-8 pt-0 bg-background border-t border-border/0 md:border-t-0 shrink-0">
                             <button
                                 type="submit"
-                                className="w-full bg-primary text-white font-bold uppercase tracking-widest py-6 hover:bg-red-600 transition-colors flex items-center justify-center gap-2 mt-8"
+                                className="w-full bg-primary text-white font-bold uppercase tracking-widest py-4 hover:bg-red-600 transition-colors flex items-center justify-center gap-2"
                             >
-                                Запустить <Send className="w-4 h-4" />
+                                Отправить заявку <Send className="w-4 h-4" />
                             </button>
-
-                            <p className="text-xs text-muted-foreground text-center font-mono">
-                                // ОТПРАВЛЯЯ ФОРМУ, ВЫ СОГЛАШАЕТЕСЬ С ПОЛИТИКОЙ КОНФИДЕНЦИАЛЬНОСТИ
+                            <p className="text-[10px] text-muted-foreground text-center font-mono mt-3 opacity-50">
+                                НАЖИМАЯ КНОПКУ, ВЫ СОГЛАШАЕТЕСЬ С ПОЛИТИКОЙ КОНФИДЕНЦИАЛЬНОСТИ
                             </p>
-                        </form>
+                        </div>
                     </motion.div>
                 </>
             )}
