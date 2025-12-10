@@ -9,14 +9,6 @@ import Link from 'next/link';
 const cases = [
     {
         id: 1,
-        title: 'SpaDream',
-        category: 'E-commerce / Bitrix',
-        image: '/cases/spadream_preview.png',
-        year: '2024',
-        link: '/portfolio/spadream'
-    },
-    {
-        id: 2,
         title: 'сайт Kapous',
         category: 'Highload / Microservices / Bitrix',
         image: '/cases/kapous_web_home.png',
@@ -24,12 +16,60 @@ const cases = [
         link: '/portfolio/kapous-web'
     },
     {
-        id: 3,
+        id: 2,
         title: 'Мобильное приложение Kapous',
         category: 'App / React Native',
-        image: '/cases/kapous_app_catalog.png',
         year: '2024',
+        image: '/cases/kapous_app_catalog.png',
         link: '/portfolio/kapous-app'
+    },
+    {
+        id: 3,
+        title: 'SpaDream',
+        category: 'E-commerce / Bitrix',
+        image: '/cases/spadream_preview.png',
+        year: '2024',
+        link: '/portfolio/spadream'
+    },
+    {
+        id: 4,
+        title: 'Открытая школа бизнеса',
+        category: 'Education / Bitrix24',
+        image: '/cases/obs_preview.png',
+        year: '2024',
+        link: '/portfolio/obs'
+    },
+    {
+        id: 5,
+        title: 'АврораСпецсталь',
+        category: 'E-commerce / Highload / AI',
+        image: '/cases/avrora-specstal-main.png',
+        year: '2025',
+        link: '/portfolio/avrora-specstal'
+    },
+    {
+        id: 6,
+        title: 'Шарик.СПБ',
+        category: 'B2B E-commerce / SAP',
+        image: '/cases/sharik-spb-main.png',
+        year: '2025',
+        link: '/portfolio/sharik-spb'
+    },
+    {
+        id: 7,
+        title: 'Веселая Затея',
+        category: 'Federal Support / Microservices',
+        image: '/cases/zatey-main.png',
+        year: '2025',
+        link: '/portfolio/zatey'
+    },
+    {
+        id: 8,
+        title: 'Печать на шарах',
+        category: 'Service / Automation',
+        image: '/cases/zatey-print-main.png',
+        year: '2025',
+        link: '/portfolio/zatey-print'
     }
 ];
 
