@@ -109,7 +109,7 @@ export default function PortfolioPage() {
                                 className="h-full w-full relative"
                             >
                                 {/* Custom Preview for Mobile App */}
-                                {item.id === 3 ? (
+                                {item.id === 2 ? (
                                     <div className="absolute inset-0 flex items-center justify-center gap-2 bg-zinc-900 p-8 group-hover:scale-105 transition-transform duration-700">
                                         <div className="relative w-[30%] aspect-[9/19.5] rounded-xl overflow-hidden border-2 border-zinc-700 shadow-xl translate-y-4 opacity-60 group-hover:opacity-80 transition-opacity">
                                             <Image src="/cases/kapous_app_filters.png" alt="Filters" fill className="object-cover" />
