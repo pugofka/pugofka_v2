@@ -34,6 +34,34 @@ const cases = [
         category: 'Education / Bitrix Framework',
         image: '/cases/obs_preview.png',
         link: '/portfolio/obs'
+    },
+    {
+        id: 5,
+        title: 'АврораСпецсталь',
+        category: 'E-commerce / Highload / AI',
+        image: '/cases/avrora-specstal-main.png',
+        link: '/portfolio/avrora-specstal'
+    },
+    {
+        id: 6,
+        title: 'Шарик.СПБ',
+        category: 'B2B E-commerce / SAP',
+        image: '/cases/sharik-spb-main.png',
+        link: '/portfolio/sharik-spb'
+    },
+    {
+        id: 7,
+        title: 'Веселая Затея',
+        category: 'Federal Support / Microservices',
+        image: '/cases/zatey-main.png',
+        link: '/portfolio/zatey'
+    },
+    {
+        id: 8,
+        title: 'Печать на шарах',
+        category: 'Service / Automation',
+        image: '/cases/zatey-print-main.png',
+        link: '/portfolio/zatey-print'
     }
 ];
 
