@@ -46,21 +46,21 @@ const cases = [
         id: 6,
         title: 'Шарик.СПБ',
         category: 'B2B E-commerce / SAP',
-        image: '/cases/sharik-spb-main.png',
+        image: '/cases/sharik-main.png',
         link: '/portfolio/sharik-spb'
     },
     {
         id: 7,
         title: 'Веселая Затея',
         category: 'Federal Support / Microservices',
-        image: '/cases/zatey-main.png',
+        image: '/cases/veselaya-zateya-main.png',
         link: '/portfolio/zatey'
     },
     {
         id: 8,
         title: 'Печать на шарах',
         category: 'Service / Automation',
-        image: '/cases/zatey-print-main.png',
+        image: '/cases/zatey-print-constructor.png',
         link: '/portfolio/zatey-print'
     }
 ];
@@ -83,7 +83,7 @@ export default function CasesGrid() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 border-t border-border">
-                {cases.map((item, index) => (
+                {cases.slice(0, 4).map((item, index) => (
                     <Link href={item.link} key={item.id} className="block group relative border-b border-r border-border aspect-[4/3] overflow-hidden cursor-pointer bg-zinc-900">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

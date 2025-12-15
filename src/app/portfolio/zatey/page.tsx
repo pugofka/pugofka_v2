@@ -53,7 +53,7 @@ export default function ZateyPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="relative aspect-video w-full overflow-hidden border-x border-border">
                         <Image
-                            src="/cases/zatey-main.png"
+                            src="/cases/veselaya-zateya-main.png"
                             alt="Zatey.ru Main Page"
                             fill
                             className="object-cover object-top"
@@ -220,7 +220,7 @@ export default function ZateyPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/zatey-catalog.png"
+                                src="/cases/veselaya-zateya-catalog.png"
                                 alt="Zatey Catalog"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -231,7 +231,7 @@ export default function ZateyPage() {
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/zatey-cart.png"
+                                src="/cases/veselaya-zateya-cart.png"
                                 alt="Zatey Cart"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"

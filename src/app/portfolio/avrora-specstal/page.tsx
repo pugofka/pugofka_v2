@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion';
 import { useUI } from '@/context/UIContext';
 import Header from '@/components/Header';
-import { ArrowRight, CheckCircle, Layers, Zap, Globe, Database, Server, Users, Search, Brain, LayoutTemplate, BarChart, Settings } from 'lucide-react';
+import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowLeft, ArrowRight, CheckCircle, Layers, Zap, Globe, Database, Server, Users, Search, Brain, LayoutTemplate, BarChart, Settings } from 'lucide-react';
+
 
 export default function AvroraSpecstalPage() {
     const { openContact } = useUI();
@@ -20,6 +22,13 @@ export default function AvroraSpecstalPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
+                        <div className="mb-8">
+                            <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-mono text-gray-500 hover:text-primary transition-colors uppercase tracking-wider">
+                                <ArrowLeft className="w-4 h-4" />
+                                Назад в портфолио
+                            </Link>
+                        </div>
+
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border mb-8">
                             <Globe className="w-4 h-4 text-primary" />
                             <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">
@@ -61,34 +70,12 @@ export default function AvroraSpecstalPage() {
                     <div>
                         <h2 className="text-3xl font-bold uppercase mb-8 flex items-center gap-3">
                             <span className="w-3 h-3 bg-primary rounded-full" />
-                            Контекст
+                            Запрос от клиента
                         </h2>
                         <div className="prose prose-invert prose-lg text-gray-400">
                             <p>
-                                <strong>АврораСпецсталь</strong> — компания по продаже металлопроката, работающая напрямую с заводами-производителями. У компании собственная логистика и широкая география поставок.
+                                Сайт с индивидуальным дизайном, способный работать с большим количеством SKU, филиалы в разных городах, с оптимизацией для поисковых систем с учетом региона и свойств товаров.
                             </p>
-                            <p>
-                                У клиента уже был сайт-визитка, который не отражал реальный масштаб компании и не помогал бизнесу расти.
-                            </p>
-                            <p className="text-white font-bold mt-6">Основные проблемы:</p>
-                            <ul className="list-none pl-0 space-y-2 mt-2">
-                                <li className="flex items-center gap-2">
-                                    <ArrowRight className="w-4 h-4 text-primary" />
-                                    Сайт выглядел устаревшим и не вызывал доверия.
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <ArrowRight className="w-4 h-4 text-primary" />
-                                    Отсутствовала инфраструктура для масштабирования по РФ.
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <ArrowRight className="w-4 h-4 text-primary" />
-                                    Не работали поиск и фильтрация.
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <ArrowRight className="w-4 h-4 text-primary" />
-                                    Каталог не отражал ассортимент (7+ млн SKU).
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div>
@@ -139,14 +126,14 @@ export default function AvroraSpecstalPage() {
                             <div className="text-4xl font-bold text-primary/20 mb-4 group-hover:text-primary transition-colors">02</div>
                             <h3 className="text-xl font-bold uppercase mb-4">Дизайн и UX</h3>
                             <p className="text-gray-400">
-                                Разработали индивидуальный дизайн в индустриальном стиле. Обеспечили легкий доступ к категориям и интуитивно понятную навигацию.
+                                Спроектировали дизайн и UX, обеспечивающие понятную навигацию и удобное взаимодействие с каталогом.
                             </p>
                         </div>
                         <div className="border border-border p-8 bg-background hover:border-primary transition-colors group">
                             <div className="text-4xl font-bold text-primary/20 mb-4 group-hover:text-primary transition-colors">03</div>
                             <h3 className="text-xl font-bold uppercase mb-4">Поиск и Фильтрация</h3>
                             <p className="text-gray-400">
-                                Реализовали мощную систему фильтрации с гибкой настройкой по множеству параметров каталога магазина.
+                                Реализован высокопроизводительный поиск по каталогу из миллионов товаров с гибкой системой фильтрации и стабильным временем ответа менее 300 мс.
                             </p>
                         </div>
                         <div className="border border-border p-8 bg-background hover:border-primary transition-colors group">
@@ -165,49 +152,48 @@ export default function AvroraSpecstalPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="flex items-center gap-4 mb-12 justify-center">
                         <Brain className="w-10 h-10 text-primary" />
-                        <h2 className="text-3xl font-bold uppercase text-center">AI Pipeline</h2>
+                        <h2 className="text-3xl font-bold uppercase text-center">AI Pipeline — Автоматизация создания контента для каталога с помощью нейросетей</h2>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="prose prose-invert prose-lg text-gray-400">
-                            <p className="text-xl text-white font-bold mb-6">
-                                Автоматизация создания каталога с помощью нейросетей
-                            </p>
                             <p>
-                                Мы внедрили полный цикл генерации контента, сократив ручную работу до минимума.
+                                Реализован полный цикл генерации контента, позволяющий свести ручную работу к минимуму.
                             </p>
                             <ul className="list-none pl-0 space-y-4 mt-6">
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="w-5 h-5 text-primary mt-1 shrink-0" />
                                     <span>
-                                        <strong className="text-white">Генерация изображений:</strong> Динамические промпты на основе SKU для создания релевантных картинок.
+                                        <strong className="text-white">Генерация изображений:</strong> динамические промпты на основе SKU для создания релевантных изображений.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="w-5 h-5 text-primary mt-1 shrink-0" />
                                     <span>
-                                        <strong className="text-white">Уникальные описания:</strong> Автоматическое написание текстов для категорий и товаров.
+                                        <strong className="text-white">Уникальные описания:</strong> автоматическая генерация текстов для категорий и товаров.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="w-5 h-5 text-primary mt-1 shrink-0" />
                                     <span>
-                                        <strong className="text-white">Система шаблонов:</strong> Обеспечение воспроизводимого качества и единого стиля.
+                                        <strong className="text-white">Система шаблонов:</strong> воспроизводимое качество и единый стиль контента.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="w-5 h-5 text-primary mt-1 shrink-0" />
                                     <span>
-                                        <strong className="text-white">Админка:</strong> Интеграция AI-инструментов для генерации в один клик.
+                                        <strong className="text-white">Админ-панель:</strong> интеграция AI-инструментов с генерацией в один клик.
                                     </span>
                                 </li>
                             </ul>
                         </div>
                         <div className="relative aspect-video border border-border group overflow-hidden bg-background">
-                            {/* Placeholder for AI Admin interface */}
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-600 font-mono uppercase text-sm">
-                                AI Admin Interface Placeholder
-                            </div>
+                            <Image
+                                src="/cases/avrora-ai.png"
+                                alt="AI Generation Pipeline"
+                                fill
+                                className="object-cover"
+                            />
                             <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
                                 AI-генерация в админке
                             </div>
@@ -223,7 +209,7 @@ export default function AvroraSpecstalPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/avrora-specstal-catalog.png"
+                                src="/cases/avrora-catalog.png"
                                 alt="Catalog"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -234,7 +220,7 @@ export default function AvroraSpecstalPage() {
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/avrora-specstal-catalog-filters.png"
+                                src="/cases/avrora-filter.png"
                                 alt="Filters"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -245,7 +231,7 @@ export default function AvroraSpecstalPage() {
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/avrora-specstal-search.png"
+                                src="/cases/avrora-search.png"
                                 alt="Search System"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -254,15 +240,7 @@ export default function AvroraSpecstalPage() {
                                 Система поиска
                             </div>
                         </div>
-                        <div className="relative aspect-[4/3] border border-border group overflow-hidden bg-background">
-                            {/* Placeholder for Admin Panel */}
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-600 font-mono uppercase text-sm">
-                                Admin Panel Placeholder
-                            </div>
-                            <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
-                                Админ-панель
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
@@ -274,7 +252,7 @@ export default function AvroraSpecstalPage() {
                     <div className="grid grid-cols-1 gap-12">
                         <div className="relative aspect-[16/9] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/avrora-specstal-product.png"
+                                src="/cases/avrora-product.png"
                                 alt="Product Card"
                                 fill
                                 className="object-cover object-top"
@@ -301,7 +279,7 @@ export default function AvroraSpecstalPage() {
                             </div>
                             <h3 className="text-xl font-bold uppercase mb-2">Ассортимент</h3>
                             <p className="text-gray-400 text-sm">
-                                Полноценный интернет-магазин с каталогом более 7 миллионов товаров, работающий быстро и стабильно.
+                                Запущен отдельный интернет-магазин с каталогом более 7 миллионов товаров, работающий быстро и стабильно.
                             </p>
                         </div>
 
@@ -313,7 +291,7 @@ export default function AvroraSpecstalPage() {
                             </div>
                             <h3 className="text-xl font-bold uppercase mb-2">Скорость</h3>
                             <p className="text-gray-400 text-sm">
-                                Время генерации контента сократилось с «бесконечности» до минут благодаря внедрению нейросетей.
+                                Время генерации контента сократилось с дней и недель до минут благодаря внедрению нейросетей.
                             </p>
                         </div>
 
@@ -325,19 +303,19 @@ export default function AvroraSpecstalPage() {
                             </div>
                             <h3 className="text-xl font-bold uppercase mb-2">Видимость</h3>
                             <p className="text-gray-400 text-sm">
-                                Рост видимости в регионах уже в первые месяцы после запуска благодаря системе мультигородов.
+                                Рост региональной видимости в первые месяцы после запуска за счёт системы мультигородов и масштабируемой структуры каталога.
                             </p>
                         </div>
 
                         {/* Result Card 4 */}
                         <div className="p-8 border border-border bg-surface/5 hover:border-primary transition-colors">
                             <div className="flex items-start justify-between mb-6">
-                                <Settings className="w-8 h-8 text-primary" />
-                                <span className="text-4xl font-bold">CMS</span>
+                                <LayoutTemplate className="w-8 h-8 text-primary" />
+                                <span className="text-4xl font-bold">UI/UX</span>
                             </div>
-                            <h3 className="text-xl font-bold uppercase mb-2">Автономия</h3>
+                            <h3 className="text-xl font-bold uppercase mb-2">Удобство</h3>
                             <p className="text-gray-400 text-sm">
-                                Клиент получил собственную систему управления каталогом с AI-инструментами, которая полностью автоматизирует рутинные процессы и позволяет команде самостоятельно расширять ассортимент без технической поддержки.
+                                Спроектирован новый интерфейс с акцентом на понятную навигацию и комфортную работу с каталогом большого объёма данных.
                             </p>
                         </div>
                     </div>
@@ -347,7 +325,7 @@ export default function AvroraSpecstalPage() {
                             <CheckCircle className="w-8 h-8 text-primary" />
                         </div>
                         <p className="text-lg text-gray-300 italic pt-4">
-                            "Сайт стал быстрым и удобным, несмотря на огромный объем данных. Клиент получил инструмент, который масштабируется без ограничений."
+                            «Сайт остался быстрым и удобным, несмотря на огромный объём данных. Решение изначально спроектировано с расчётом на масштабирование»
                         </p>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useUI } from '@/context/UIContext';
 import Header from '@/components/Header';
-import { ArrowRight, ArrowUpRight, Smartphone, Code, Zap, Wifi } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Smartphone, Code, Zap, Wifi } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -21,6 +21,13 @@ export default function KapousAppPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
+                        <div className="mb-8">
+                            <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-mono text-gray-500 hover:text-primary transition-colors uppercase tracking-wider">
+                                <ArrowLeft className="w-4 h-4" />
+                                Назад в портфолио
+                            </Link>
+                        </div>
+
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border mb-8">
                             <Smartphone className="w-4 h-4 text-primary" />
                             <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">

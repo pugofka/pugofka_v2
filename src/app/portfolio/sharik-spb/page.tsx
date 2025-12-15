@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useUI } from '@/context/UIContext';
 import Header from '@/components/Header';
-import { ArrowRight, Calculator, Database, FileSpreadsheet, Layers, LayoutTemplate, Search, ShoppingCart, Truck, Zap, BarChart } from 'lucide-react';
+import { ArrowRight, Calculator, Database, FileSpreadsheet, Layers, LayoutTemplate, Search, ShoppingCart, Truck, Zap, BarChart, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -53,7 +53,7 @@ export default function SharikSpbPage() {
                 <div className="max-w-7xl mx-auto">
                     <div className="relative aspect-video w-full overflow-hidden border-x border-border">
                         <Image
-                            src="/cases/sharik-spb-main.png"
+                            src="/cases/sharik-main.png"
                             alt="Sharik SPB Main Page"
                             fill
                             className="object-cover object-top"
@@ -73,13 +73,14 @@ export default function SharikSpbPage() {
                             Контекст
                         </h2>
                         <div className="prose prose-invert prose-lg text-gray-400">
-                            <p>
-                                <strong>Sharik.spb.ru</strong> — лидер рынка оптовой продажи воздушных шаров и праздничных товаров в СПб.
-                                Компания работает с B2B-клиентами, имеет сеть складов и огромный ассортимент.
+                            <p className="mb-6">
+                                <strong>Sharik.spb.ru</strong> — оптовый поставщик воздушных шаров и праздничных товаров в Санкт-Петербурге, работающий с B2B-клиентами, многие из которых являются постоянными партнёрами компании.
                             </p>
-                            <p>
-                                До нашей работы сайт представлял собой простую "визитку", которая никак не помогала оптовым продажам.
-                                Основной поток заказов шел через физические магазины Cash&Carry, что ограничивало рост.
+                            <p className="mb-6">
+                                К моменту начала проекта сайт не обновлялся с 2008 года, не отвечал текущим требованиям оптовых клиентов и не поддерживал ключевые бизнес-процессы. Основной поток заказов шел через физические магазины Cash&Carry.
+                            </p>
+                            <p className="mb-6">
+                                Нужен был современный, удобный и функциональный сайт для оптовых покупателей, с калькулятором услуги печати на шарах.
                             </p>
                             <p className="text-white font-bold mt-6">Болевые точки:</p>
                             <ul className="list-none pl-0 space-y-2 mt-2">
@@ -180,7 +181,7 @@ export default function SharikSpbPage() {
                             <LayoutTemplate className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-bold uppercase mb-4">Адаптивный E-commerce</h3>
                             <p className="text-gray-400">
-                                Проработали 36 макетов для всех типов устройств. Интерфейс удобен как для менеджера в офисе, так и для декоратора "в полях" со смартфоном.
+                                Мы разработали 36 макетов для всех типов устройств. Интерфейс удобен для работы на ПК и мобильных устройствах, обеспечивая комфортное оформление заказов и взаимодействие с каталогом.
                             </p>
                         </div>
                         <div className="border border-border p-8 bg-background hover:border-primary transition-colors group">
@@ -208,7 +209,7 @@ export default function SharikSpbPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/sharik-spb-catalog.png"
+                                src="/cases/sharik-catalog.png"
                                 alt="Wholesale Catalog"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -219,7 +220,7 @@ export default function SharikSpbPage() {
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/sharik-spb-cart.png"
+                                src="/cases/sharik-cart.png"
                                 alt="Wholesale Cart"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -262,8 +263,11 @@ export default function SharikSpbPage() {
                     </div>
 
                     <div className="p-8 border border-border bg-surface/10 text-center max-w-3xl mx-auto relative">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-4">
+                            <CheckCircle className="w-8 h-8 text-primary" />
+                        </div>
                         <p className="text-lg text-gray-300 italic pt-4">
-                            "Онлайн-заказы стали удобнее офлайна. Мы перевели существенную часть мелкого опта в digital, разгрузив менеджеров зала."
+                            «В рамках проекта был реализован весь запланированный функционал. Дополнительная оптимизация отдельных решений позволила повысить удобство использования и скорость работы сайта, что положительно сказалось на пользовательском опыте и росте конверсии»
                         </p>
                     </div>
                 </div>
@@ -274,7 +278,7 @@ export default function SharikSpbPage() {
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-xl font-bold uppercase mb-8 text-center text-gray-500 tracking-widest">Технологии</h2>
                     <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        {["1С-Битрикс", "PHP", "SAP Integration", "jQuery", "MySQL", "Composit"].map((tech, i) => (
+                        {["1С-Битрикс", "PHP", "SAP Integration", "jQuery", "MySQL"].map((tech, i) => (
                             <div key={i} className="px-6 py-3 border border-border bg-surface/10 font-mono text-sm uppercase hover:border-primary transition-colors cursor-default">
                                 {tech}
                             </div>
