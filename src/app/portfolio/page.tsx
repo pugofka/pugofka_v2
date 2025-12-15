@@ -51,7 +51,7 @@ const cases = [
         id: 6,
         title: 'Шарик.СПБ',
         category: 'B2B E-commerce / SAP',
-        image: '/cases/sharik-spb-main.png',
+        image: '/cases/sharik-main.png',
         year: '2025',
         link: '/portfolio/sharik-spb'
     },
@@ -59,7 +59,7 @@ const cases = [
         id: 7,
         title: 'Веселая Затея',
         category: 'Federal Support / Microservices',
-        image: '/cases/zatey-main.png',
+        image: '/cases/veselaya-zateya-main.png',
         year: '2025',
         link: '/portfolio/zatey'
     },
@@ -67,7 +67,7 @@ const cases = [
         id: 8,
         title: 'Печать на шарах',
         category: 'Service / Automation',
-        image: '/cases/zatey-print-main.png',
+        image: '/cases/zatey-print-constructor.png',
         year: '2025',
         link: '/portfolio/zatey-print'
     }
