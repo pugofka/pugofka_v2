@@ -76,10 +76,10 @@ export const blogService = {
         };
     },
 
-    async getPostById(id: string | number): Promise<BlogPost | undefined> {
+    async getPostById(idOrSlug: string | number): Promise<BlogPost | undefined> {
         if (API_URL) {
             try {
-                const res = await fetch(`${API_URL}/post/${id}`, { next: { revalidate: 3600 } });
+                const res = await fetch(`${API_URL}/post/${idOrSlug}`, { next: { revalidate: 3600 } });
                 if (!res.ok) return undefined;
                 const post = await res.json();
                 return {
@@ -93,7 +93,44 @@ export const blogService = {
         }
 
         await delay(500);
-        return blogPosts.find(post => String(post.id) === String(id));
+        return blogPosts.find(post => String(post.id) === String(idOrSlug) || post.slug === String(idOrSlug));
+    },
+
+    async getPostBySlug(categorySlug: string, slug: string): Promise<BlogPost | undefined> {
+        if (API_URL) {
+            try {
+                let page = 1;
+                let lastPage = 1;
+
+                while (page <= lastPage) {
+                    const params = new URLSearchParams({ page: page.toString(), limit: '50' });
+                    if (categorySlug && categorySlug !== 'all') {
+                        params.set('category', categorySlug);
+                    }
+                    const res = await fetch(`${API_URL}/posts?${params.toString()}`, { cache: 'no-store' });
+                    if (!res.ok) break;
+                    const json = await res.json();
+
+                    const list = Array.isArray(json) ? json : json.data;
+                    const meta = Array.isArray(json) ? undefined : json.meta;
+
+                    if (Array.isArray(list)) {
+                        const match = list.find((post: BlogPost) => post.slug === slug);
+                        if (match?.id !== undefined) {
+                            return await blogService.getPostById(match.id);
+                        }
+                    }
+
+                    lastPage = meta?.lastPage || 1;
+                    page += 1;
+                }
+            } catch (error) {
+                console.error("API Error, falling back to mock:", error);
+            }
+        }
+
+        await delay(300);
+        return blogPosts.find(post => post.slug === slug);
     },
 
     async getCategories(): Promise<{ id: string | number; name: string; slug: string; count: number }[]> {

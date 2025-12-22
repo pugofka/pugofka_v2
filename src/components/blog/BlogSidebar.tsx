@@ -1,7 +1,7 @@
 'use client';
 
-import { Folder, Search, Hash } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
+import { Folder, Search } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 interface Category {
@@ -16,14 +16,15 @@ interface BlogSidebarProps {
 }
 
 export default function BlogSidebar({ categories }: BlogSidebarProps) {
-    const searchParams = useSearchParams();
-    const activeCategory = searchParams.get('category') || 'all';
+    const pathname = usePathname();
+    const segments = pathname.split('/').filter(Boolean);
+    const activeCategory = segments[0] === 'blog' && segments[1] ? segments[1] : 'all';
 
     const getCategoryUrl = (categorySlug: string) => {
         if (categorySlug === 'all') {
             return '/blog';
         }
-        return `/blog?category=${categorySlug}`;
+        return `/blog/${categorySlug}`;
     };
 
     return (
