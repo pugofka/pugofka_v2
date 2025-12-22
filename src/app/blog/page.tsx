@@ -1,9 +1,46 @@
 import BlogCard from '@/components/blog/BlogCard';
 import BlogSidebar from '@/components/blog/BlogSidebar';
+import Pagination from '@/components/blog/Pagination';
 import { blogService } from '@/services/blogService';
+import { Metadata } from 'next';
 
-export default async function BlogPage() {
-    const posts = await blogService.getPosts();
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'System Logs | Pugofka - Блог о разработке и архитектуре',
+    description: 'Архив технических решений, архитектурных паттернов и заметок от команды Pugofka. Статьи о разработке, highload системах, дизайне и AI.',
+    openGraph: {
+        title: 'System Logs | Pugofka',
+        description: 'Архив технических решений, архитектурных паттернов и заметок от команды Pugofka.',
+        type: 'website',
+        locale: 'ru_RU',
+        siteName: 'Pugofka',
+        images: [
+            {
+                url: 'https://pugofka.com/og-blog.jpg', // Нужно будет создать это изображение
+                width: 1200,
+                height: 630,
+                alt: 'Pugofka System Logs',
+            }
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'System Logs | Pugofka',
+        description: 'Архив технических решений, архитектурных паттернов и заметок от команды Pugofka.',
+    },
+};
+
+interface PageProps {
+    searchParams: Promise<{ page?: string; category?: string }>;
+}
+
+export default async function BlogPage({ searchParams }: PageProps) {
+    const params = await searchParams;
+    const page = Number(params.page) || 1;
+    const category = params.category;
+    const { data: posts, meta } = await blogService.getPosts(page, category);
+    const categories = await blogService.getCategories();
 
     return (
         <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
@@ -33,10 +70,11 @@ export default async function BlogPage() {
                     {/* Sidebar (1 Col) */}
                     <div className="md:col-span-1">
                         <div className="sticky top-32">
-                            <BlogSidebar />
+                            <BlogSidebar categories={categories} />
                         </div>
                     </div>
 
+                    {/* Content Feed (3 Cols) */}
                     {/* Content Feed (3 Cols) */}
                     <div className="md:col-span-3">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -46,6 +84,13 @@ export default async function BlogPage() {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Pagination */}
+                        <Pagination
+                            currentPage={meta.page}
+                            totalPages={meta.lastPage}
+                            baseUrl="/blog"
+                        />
                     </div>
                 </div>
             </div>

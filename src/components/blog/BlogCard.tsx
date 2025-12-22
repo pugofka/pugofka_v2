@@ -10,7 +10,7 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
     return (
-        <Link href={`/blog/${post.slug}`} className="group block h-full">
+        <Link href={`/blog/${post.id}-${post.slug}`} className="group block h-full">
             <article className="h-full bg-surface border border-border p-6 relative overflow-hidden transition-all duration-300 hover:bg-surface-hover hover:border-primary/50 flex flex-col">
 
                 {/* Decorative Corners */}
@@ -18,6 +18,17 @@ export default function BlogCard({ post }: BlogCardProps) {
                 <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary/0 group-hover:border-primary transition-colors duration-300" />
                 <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary/0 group-hover:border-primary transition-colors duration-300" />
                 <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary/0 group-hover:border-primary transition-colors duration-300" />
+
+                {/* Cover Image */}
+                {post.coverImage && (
+                    <div className="relative w-full aspect-video mb-6 overflow-hidden border border-border/50">
+                        <img
+                            src={post.coverImage}
+                            alt={post.title}
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        />
+                    </div>
+                )}
 
                 {/* Header Meta */}
                 <div className="flex justify-between items-center mb-6 font-mono text-xs text-gray-500 uppercase tracking-wider">
@@ -41,14 +52,10 @@ export default function BlogCard({ post }: BlogCardProps) {
                 {/* Footer Meta */}
                 <div className="pt-6 border-t border-border/50 flex justify-between items-center mt-auto">
                     <div className="flex gap-2">
-                        {post.tags.slice(0, 2).map(tag => (
-                            <span key={tag} className="text-[10px] font-mono border border-border px-2 py-1 text-gray-400 uppercase">
-                                {tag}
-                            </span>
-                        ))}
+                        {/* Tags hidden temporarily */}
                     </div>
                     <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary group-hover:translate-x-1 transition-transform">
-                        <span>Read_Log</span>
+                        <span>Читать далее</span>
                         <ArrowRight className="w-3 h-3" />
                     </div>
                 </div>
