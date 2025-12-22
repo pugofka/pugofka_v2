@@ -1,27 +1,90 @@
 import { blogService } from '@/services/blogService';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Calendar, Share2, Printer } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 import { Metadata } from 'next';
+import PostToolbar from '@/components/blog/PostToolbar';
 
 interface PageProps {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { slug } = await params;
-    const post = await blogService.getPostBySlug(slug);
+    const { id: paramId } = await params;
+    // Extract ID (assumes format "ID" or "ID-SLUG")
+    const id = paramId.split('-')[0];
+
+    const post = await blogService.getPostById(id);
     if (!post) return { title: 'Post Not Found' };
+
+    const ogImage = post.seo?.ogImage || post.coverImage || 'https://pugofka.com/og-default.jpg';
+    const fullOgImage = ogImage.startsWith('http') ? ogImage : `https://api.pugofka.com${ogImage}`;
+
+    if (post.seo) {
+        return {
+            title: post.seo.metaTitle,
+            description: post.seo.metaDescription,
+            openGraph: {
+                title: post.seo.metaTitle,
+                description: post.seo.metaDescription,
+                type: 'article',
+                locale: 'ru_RU',
+                siteName: 'Pugofka',
+                publishedTime: post.date,
+                authors: ['Pugofka'],
+                images: [
+                    {
+                        url: fullOgImage,
+                        width: 1200,
+                        height: 630,
+                        alt: post.title,
+                    }
+                ],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: post.seo.metaTitle,
+                description: post.seo.metaDescription,
+                images: [fullOgImage],
+            },
+        };
+    }
 
     return {
         title: `${post.title} | Pugofka System Logs`,
         description: post.excerpt,
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            type: 'article',
+            locale: 'ru_RU',
+            siteName: 'Pugofka',
+            publishedTime: post.date,
+            authors: ['Pugofka'],
+            images: [
+                {
+                    url: fullOgImage,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                }
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+            images: [fullOgImage],
+        },
     };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-    const { slug } = await params;
-    const post = await blogService.getPostBySlug(slug);
+    const { id: paramId } = await params;
+    // Extract ID (assumes format "ID" or "ID-SLUG")
+    const id = paramId.split('-')[0];
+
+    const post = await blogService.getPostById(id);
 
     if (!post) {
         notFound();
@@ -38,13 +101,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {/* Back Link */}
                 <Link href="/blog" className="inline-flex items-center gap-2 text-gray-500 hover:text-primary transition-colors mb-12 font-mono text-sm uppercase tracking-widest group">
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Back_to_Index
+                    Вернуться к блогу
                 </Link>
 
                 {/* Hero Header */}
                 <header className="max-w-4xl mx-auto mb-16 border-b border-border pb-12">
                     <div className="flex flex-wrap gap-4 mb-8 font-mono text-xs text-primary uppercase tracking-widest">
-                        <span className="border border-border px-2 py-1">{post.category}</span>
+                        <span className="border border-border px-2 py-1">
+                            {typeof post.category === 'object' ? post.category.name : post.category}
+                        </span>
                         <span className="flex items-center gap-2 text-gray-400">
                             <Clock className="w-3 h-3" /> {post.readingTime}
                         </span>
@@ -82,14 +147,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {/* Main Content */}
                 <div className="max-w-3xl mx-auto">
                     {/* Toolbar */}
-                    <div className="flex justify-end gap-4 mb-8 border-b border-border/50 pb-4">
-                        <button className="p-2 hover:bg-surface text-gray-500 hover:text-white transition-colors">
-                            <Share2 className="w-5 h-5" />
-                        </button>
-                        <button className="p-2 hover:bg-surface text-gray-500 hover:text-white transition-colors">
-                            <Printer className="w-5 h-5" />
-                        </button>
-                    </div>
+                    <PostToolbar title={post.title} />
 
                     {/* Content Body */}
                     <div
@@ -100,11 +158,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {/* Tags Footer */}
                     <div className="mt-16 pt-8 border-t border-border">
                         <div className="flex flex-wrap gap-2">
-                            {post.tags.map(tag => (
-                                <span key={tag} className="text-sm font-mono text-gray-500">
-                                    #{tag}
-                                </span>
-                            ))}
+                            <div className="flex flex-wrap gap-2">
+                                {/* Tags hidden temporarily */}
+                            </div>
                         </div>
                     </div>
                 </div>

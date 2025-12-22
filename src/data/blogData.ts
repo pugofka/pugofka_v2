@@ -1,14 +1,19 @@
 export interface BlogPost {
-  id: string;
+  id: string | number;
   slug: string;
   title: string;
   excerpt: string;
   content: string; // HTML or Markdown content
   date: string;
   readingTime: string;
-  category: string;
+  category: string | { id: number | string; name: string; slug: string };
   tags: string[];
   coverImage?: string;
+  seo?: {
+    metaTitle: string;
+    metaDescription: string;
+    ogImage: string;
+  };
 }
 
 export const blogPosts: BlogPost[] = [
@@ -45,7 +50,7 @@ export const blogPosts: BlogPost[] = [
       <p>Эти языки продолжают доминировать в нише производительных backend-компонентов.</p>
     `,
     date: "2024-12-15",
-    readingTime: "5 MIN",
+    readingTime: "5 МИН",
     category: "Architecture",
     tags: ["Highload", "Backend", "Trends"]
   },
@@ -62,7 +67,7 @@ export const blogPosts: BlogPost[] = [
       <p>Потоковая передача HTML позволяет пользователю видеть контент быстрее, даже если backend еще думает.</p>
     `,
     date: "2024-12-10",
-    readingTime: "8 MIN",
+    readingTime: "8 МИН",
     category: "Development",
     tags: ["Next.js", "React", "Optimization"]
   },
@@ -76,7 +81,7 @@ export const blogPosts: BlogPost[] = [
       <p>Индастриал стиль — это не просто "некрасиво". Это честность материалов. В вебе это выражается в видимых сетках, стандартных шрифтах и отсутствии лишнего декора.</p>
     `,
     date: "2024-11-28",
-    readingTime: "4 MIN",
+    readingTime: "4 МИН",
     category: "Design",
     tags: ["Brutalism", "UI/UX", "Trends"]
   },
@@ -90,7 +95,7 @@ export const blogPosts: BlogPost[] = [
       <p>Использование LLM для генерации описаний товаров — это уже стандарт. Следующий шаг — полная персонализация выдачи.</p>
     `,
     date: "2024-11-15",
-    readingTime: "12 MIN",
+    readingTime: "12 МИН",
     category: "AI",
     tags: ["LLM", "E-commerce", "Automation"]
   }

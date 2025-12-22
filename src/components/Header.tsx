@@ -40,6 +40,10 @@ export default function Header() {
                 </Link>
 
                 <div className="hidden md:flex gap-8 font-mono text-sm text-gray-400 items-center">
+                    <Link href="/blog" className="hover:text-primary transition-colors uppercase tracking-widest">
+                        System_Logs
+                    </Link>
+                    <div className="h-4 w-px bg-border" />
                     <Link href="/company" className="hover:text-primary transition-colors uppercase tracking-widest">
                         Manifesto
                     </Link>
@@ -73,6 +77,13 @@ export default function Header() {
                                 className="hover:text-primary transition-colors"
                             >
                                 Главная
+                            </Link>
+                            <Link
+                                href="/blog"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="hover:text-primary transition-colors"
+                            >
+                                Блог
                             </Link>
                             <Link
                                 href="/company"

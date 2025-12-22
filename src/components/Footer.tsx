@@ -46,6 +46,7 @@ export default function Footer() {
                         </h4>
                         <ul className="space-y-4 font-mono text-sm">
                             <li><Link href="/portfolio" className="hover:text-primary transition-colors">ПРОЕКТЫ</Link></li>
+                            <li><Link href="/blog" className="hover:text-primary transition-colors">БЛОГ</Link></li>
                             <li><Link href="/company" className="hover:text-primary transition-colors">МАНИФЕСТ</Link></li>
                             <li className="pt-4"><Link href="/privacy" className="text-muted-foreground hover:text-white transition-colors text-xs">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</Link></li>
                             <li><Link href="/terms" className="text-muted-foreground hover:text-white transition-colors text-xs">УСЛОВИЯ ИСПОЛЬЗОВАНИЯ</Link></li>

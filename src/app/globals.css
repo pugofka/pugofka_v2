@@ -121,7 +121,23 @@ body {
   color: #d1d5db;
 }
 
+.blog-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #d1d5db;
+}
+
 .blog-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.blog-content ul ul,
+.blog-content ol ol,
+.blog-content ul ol,
+.blog-content ol ul {
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
