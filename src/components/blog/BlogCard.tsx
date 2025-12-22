@@ -9,8 +9,16 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
+    const categorySlug = typeof post.category === 'object' && post.category?.slug
+        ? post.category.slug
+        : String(post.category || 'all')
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-')
+            .replace(/[^a-z0-9-_]/g, '');
+
     return (
-        <Link href={`/blog/${post.id}-${post.slug}`} className="group block h-full">
+        <Link href={`/blog/${categorySlug}/${post.slug}`} className="group block h-full">
             <article className="h-full bg-surface border border-border p-6 relative overflow-hidden transition-all duration-300 hover:bg-surface-hover hover:border-primary/50 flex flex-col">
 
                 {/* Decorative Corners */}

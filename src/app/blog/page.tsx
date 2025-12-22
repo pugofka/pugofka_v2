@@ -38,8 +38,7 @@ interface PageProps {
 export default async function BlogPage({ searchParams }: PageProps) {
     const params = await searchParams;
     const page = Number(params.page) || 1;
-    const category = params.category;
-    const { data: posts, meta } = await blogService.getPosts(page, category);
+    const { data: posts, meta } = await blogService.getPosts(page);
     const categories = await blogService.getCategories();
 
     return (
