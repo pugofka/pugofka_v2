@@ -3,13 +3,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
-import { Mail, MapPin, Phone, ArrowRight, Loader2, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Phone, ArrowRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { validateContactForm, sanitizeInput, ValidationError } from '@/utils/validation';
 
-const API_URL = '/api/contact';
+const API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || 'https://api.pugofka.com/api/contact';
 
 export default function ContactsPage() {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [errors, setErrors] = useState<ValidationError>({});
+    const [apiError, setApiError] = useState<string>('');
 
     // Form State
     const [formData, setFormData] = useState({
@@ -25,16 +28,30 @@ export default function ContactsPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setErrors({});
+        setApiError('');
+
+        // Sanitize and validate
+        const cleanData = {
+            name: sanitizeInput(formData.name),
+            contact: sanitizeInput(formData.email),
+            description: sanitizeInput(formData.message),
+        };
+
+        const validationErrors = validateContactForm(cleanData);
+        if (validationErrors) {
+            setErrors(validationErrors);
+            return;
+        }
+
         setLoading(true);
 
         const payload = {
-            name: formData.name,
-            contact: formData.email,
-            description: formData.message,
+            name: cleanData.name,
+            contact: cleanData.contact,
+            description: cleanData.description,
             types: ['Contact Page Form'] // Tag to distinguish source
         };
-
-        console.log('🚀 [ContactsPage] Sending to API:', payload);
 
         try {
             const response = await fetch(API_URL, {
@@ -45,16 +62,24 @@ export default function ContactsPage() {
                 body: JSON.stringify(payload),
             });
 
-            if (response.ok) {
+            const data = await response.json().catch(() => ({ success: response.ok }));
+
+            if (response.ok || data.success) {
                 setSuccess(true);
                 setFormData({ name: '', email: '', message: '' });
                 // Reset success message after 5 seconds to allow sending another
                 setTimeout(() => setSuccess(false), 5000);
             } else {
-                console.error('Failed to submit form');
+                // Handle validation errors from backend
+                if (data.errors) {
+                    setErrors(data.errors);
+                } else {
+                    setApiError(data.message || 'Ошибка при отправке. Попробуйте позже.');
+                }
             }
         } catch (error) {
             console.error('Error submitting form:', error);
+            setApiError('Ошибка соединения. Проверьте интернет и попробуйте снова.');
         } finally {
             setLoading(false);
         }
@@ -137,6 +162,14 @@ export default function ContactsPage() {
                                 Расскажите о вашей задаче. Мы ответим в течение рабочего дня.
                             </p>
 
+                            {/* API Error Message */}
+                            {apiError && (
+                                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 flex items-start gap-3 relative z-10">
+                                    <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                                    <p className="text-sm text-red-200">{apiError}</p>
+                                </div>
+                            )}
+
                             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                                 <div>
                                     <label className="block text-xs font-mono text-gray-500 uppercase mb-2">Имя</label>
@@ -146,9 +179,14 @@ export default function ContactsPage() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         type="text"
-                                        className="w-full bg-background border border-border p-4 focus:border-primary outline-none transition-colors"
+                                        className={`w-full bg-background border p-4 outline-none transition-colors ${
+                                            errors.name ? 'border-red-500' : 'border-border focus:border-primary'
+                                        }`}
                                         placeholder="Иван Иванов"
                                     />
+                                    {errors.name && (
+                                        <p className="text-xs text-red-400 font-mono mt-1">{errors.name}</p>
+                                    )}
                                 </div>
                                 <div>
                                     <label className="block text-xs font-mono text-gray-500 uppercase mb-2">Email</label>
@@ -158,9 +196,14 @@ export default function ContactsPage() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         type="email"
-                                        className="w-full bg-background border border-border p-4 focus:border-primary outline-none transition-colors"
+                                        className={`w-full bg-background border p-4 outline-none transition-colors ${
+                                            errors.contact ? 'border-red-500' : 'border-border focus:border-primary'
+                                        }`}
                                         placeholder="ivan@company.com"
                                     />
+                                    {errors.contact && (
+                                        <p className="text-xs text-red-400 font-mono mt-1">{errors.contact}</p>
+                                    )}
                                 </div>
                                 <div>
                                     <label className="block text-xs font-mono text-gray-500 uppercase mb-2">Задача</label>
@@ -168,9 +211,14 @@ export default function ContactsPage() {
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        className="w-full bg-background border border-border p-4 h-32 focus:border-primary outline-none transition-colors resize-none"
+                                        className={`w-full bg-background border p-4 h-32 outline-none transition-colors resize-none ${
+                                            errors.description ? 'border-red-500' : 'border-border focus:border-primary'
+                                        }`}
                                         placeholder="Опишите ваш проект..."
                                     />
+                                    {errors.description && (
+                                        <p className="text-xs text-red-400 font-mono mt-1">{errors.description}</p>
+                                    )}
                                 </div>
                                 <button
                                     type="submit"
