@@ -17,7 +17,7 @@ export default function ContactsPage() {
     // Form State
     const [formData, setFormData] = useState({
         name: '',
-        email: '',
+        contact: '',
         message: ''
     });
 
@@ -34,7 +34,7 @@ export default function ContactsPage() {
         // Sanitize and validate
         const cleanData = {
             name: sanitizeInput(formData.name),
-            contact: sanitizeInput(formData.email),
+            contact: sanitizeInput(formData.contact),
             description: sanitizeInput(formData.message),
         };
 
@@ -66,7 +66,7 @@ export default function ContactsPage() {
 
             if (response.ok || data.success) {
                 setSuccess(true);
-                setFormData({ name: '', email: '', message: '' });
+                setFormData({ name: '', contact: '', message: '' });
                 // Reset success message after 5 seconds to allow sending another
                 setTimeout(() => setSuccess(false), 5000);
             } else {
@@ -189,17 +189,17 @@ export default function ContactsPage() {
                                     )}
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-mono text-gray-500 uppercase mb-2">Email</label>
+                                    <label className="block text-xs font-mono text-gray-500 uppercase mb-2">Контакты</label>
                                     <input
                                         required
-                                        name="email"
-                                        value={formData.email}
+                                        name="contact"
+                                        value={formData.contact}
                                         onChange={handleChange}
-                                        type="email"
+                                        type="text"
                                         className={`w-full bg-background border p-4 outline-none transition-colors ${
                                             errors.contact ? 'border-red-500' : 'border-border focus:border-primary'
                                         }`}
-                                        placeholder="ivan@company.com"
+                                        placeholder="TELEGRAM / WHATSAPP / EMAIL"
                                     />
                                     {errors.contact && (
                                         <p className="text-xs text-red-400 font-mono mt-1">{errors.contact}</p>
