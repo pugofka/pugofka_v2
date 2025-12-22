@@ -65,15 +65,32 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         e.preventDefault();
         setLoading(true);
 
+        // Helper to convert file to base64
+        const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result as string);
+            reader.onerror = error => reject(error);
+        });
+
+        let fileData = null;
+        if (file) {
+            try {
+                fileData = await toBase64(file);
+            } catch (error) {
+                console.error('Error converting file:', error);
+            }
+        }
+
         const formData = {
             name: nameRef.current?.value || '',
             contact: contactRef.current?.value || '',
             types: selectedTypes,
             description: descriptionRef.current?.value || '',
-            fileName: file?.name || null
+            fileContent: fileData // Base64 string
         };
 
-        console.log('🚀 [ContactModal] Sending to API:', formData);
+        console.log('🚀 [ContactModal] Sending to API:', { ...formData, fileContent: fileData ? '(base64 string truncated)' : null });
 
         try {
             const response = await fetch(API_URL, {

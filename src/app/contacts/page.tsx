@@ -31,7 +31,7 @@ export default function ContactsPage() {
             name: formData.name,
             contact: formData.email,
             description: formData.message,
-            type: ['Contact Page Form'] // Tag to distinguish source
+            types: ['Contact Page Form'] // Tag to distinguish source
         };
 
         console.log('🚀 [ContactsPage] Sending to API:', payload);

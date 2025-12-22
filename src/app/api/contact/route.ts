@@ -7,8 +7,13 @@ export async function POST(request: Request) {
     try {
         const body = await request.json();
 
-        // Log the received data for debugging purposes
-        console.log('Form submission received:', body);
+        // Log the received data for debugging
+        const { fileContent, ...loggableBody } = body;
+        console.log('API Route Received:', loggableBody);
+
+        if (fileContent) {
+            console.log(`File attached. Size: ${Math.round(fileContent.length / 1024)}KB`);
+        }
 
         // Return a success response
         return NextResponse.json(
