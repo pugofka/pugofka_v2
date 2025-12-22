@@ -19,6 +19,7 @@ export default function BlogSidebar({ categories }: BlogSidebarProps) {
     const pathname = usePathname();
     const segments = pathname.split('/').filter(Boolean);
     const activeCategory = segments[0] === 'blog' && segments[1] ? segments[1] : 'all';
+    const showSearch = process.env.NEXT_PUBLIC_BLOG_SEARCH_ENABLED === 'true';
 
     const getCategoryUrl = (categorySlug: string) => {
         if (categorySlug === 'all') {
@@ -30,20 +31,22 @@ export default function BlogSidebar({ categories }: BlogSidebarProps) {
     return (
         <aside className="space-y-12">
             {/* Search Module */}
-            <div className="space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 mb-2">
-                    <Search className="w-3 h-3" />
-                    <span>Search_Database</span>
+            {showSearch && (
+                <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 mb-2">
+                        <Search className="w-3 h-3" />
+                        <span>Search_Database</span>
+                    </div>
+                    <div className="relative group">
+                        <input
+                            type="text"
+                            placeholder="SEARCH QUERY..."
+                            className="w-full bg-surface border border-border p-4 font-mono text-sm focus:outline-none focus:border-primary transition-colors text-white placeholder-gray-600"
+                        />
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-primary animate-pulse" />
+                    </div>
                 </div>
-                <div className="relative group">
-                    <input
-                        type="text"
-                        placeholder="SEARCH QUERY..."
-                        className="w-full bg-surface border border-border p-4 font-mono text-sm focus:outline-none focus:border-primary transition-colors text-white placeholder-gray-600"
-                    />
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-primary animate-pulse" />
-                </div>
-            </div>
+            )}
 
             {/* Filter Module (File System Style) */}
             <div className="space-y-4">

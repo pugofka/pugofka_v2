@@ -18,10 +18,19 @@ export const blogService = {
         if (API_URL) {
             try {
                 const params = new URLSearchParams({ page: page.toString() });
+                let endpoint = `${API_URL}/posts?${params.toString()}`;
+
                 if (category && category !== 'all') {
-                    params.set('category', category);
+                    const categories = await blogService.getCategories();
+                    const matched = categories.find((item) => item.slug === category);
+                    const categoryId = matched?.id ?? (String(category).match(/^\d+$/) ? category : null);
+
+                    if (categoryId) {
+                        endpoint = `${API_URL}/posts/category/${categoryId}?${params.toString()}`;
+                    }
                 }
-                const res = await fetch(`${API_URL}/posts?${params.toString()}`, { cache: 'no-store' });
+
+                const res = await fetch(endpoint, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`Failed to fetch posts: ${res.status} ${res.statusText}`);
                 const json = await res.json();
 
