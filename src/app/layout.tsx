@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Suspense } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
+import YandexMetrika from '@/components/YandexMetrika/YandexMetrika';
 import { UIProvider } from "@/context/UIContext";
 import "./globals.css";
 
@@ -63,7 +65,10 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
-        <UIProvider>
+      <Suspense fallback={null}>
+        <YandexMetrika />
+      </Suspense>
+      <UIProvider>
           <Header />
           {children}
           <Footer />
