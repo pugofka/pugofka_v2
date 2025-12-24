@@ -258,7 +258,7 @@ export default async function BlogSegmentsPage({ params, searchParams }: PagePro
                                 <img
                                     src={post.detailImage || post.coverImage}
                                     alt={post.title}
-                                    className="w-full h-[300px] md:h-[500px] object-cover"
+                                    className="w-full max-h-[500px] object-contain"
                                 />
                             </div>
                         )}
