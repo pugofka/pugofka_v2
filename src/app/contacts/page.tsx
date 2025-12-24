@@ -46,20 +46,16 @@ export default function ContactsPage() {
 
         setLoading(true);
 
-        const payload = {
-            name: cleanData.name,
-            contact: cleanData.contact,
-            description: cleanData.description,
-            types: ['Contact Page Form'] // Tag to distinguish source
-        };
+        const payload = new FormData();
+        payload.append('name', cleanData.name);
+        payload.append('contact', cleanData.contact);
+        payload.append('description', cleanData.description);
+        payload.append('types', 'Contact Page Form');
 
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
+                body: payload,
             });
 
             const data = await response.json().catch(() => ({ success: response.ok }));
