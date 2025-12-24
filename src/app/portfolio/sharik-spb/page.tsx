@@ -156,12 +156,13 @@ export default function SharikSpbPage() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="order-1 lg:order-2 relative aspect-[16/10] border border-border group overflow-hidden bg-background">
+                        <div className="order-1 lg:order-2 relative border border-border group overflow-hidden bg-background">
                             <Image
-                                src="/cases/sharik-print-calc.jpg"
+                                src="/cases/sharik-print-calc.png"
                                 alt="Print Calculator Interface"
-                                fill
-                                className="object-contain"
+                                width={800}
+                                height={600}
+                                className="w-full h-auto"
                             />
                             <div className="absolute bottom-4 right-4 bg-primary text-black font-bold px-4 py-2 text-xs uppercase">
                                 Interactive Module
