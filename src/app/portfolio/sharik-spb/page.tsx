@@ -42,7 +42,7 @@ export default function SharikSpbPage() {
 
                         <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-12">
                             Крупнейший оптовый интернет-магазин товаров для праздника в Санкт-Петербурге.
-                            Умный калькулятор печати, загрузка заказов из Excel и полная синхронизация с SAP.
+                            Автоматизация оптовых заказов, умный калькулятор услуг и полная интеграция с SAP.
                         </p>
                     </motion.div>
                 </div>
@@ -80,7 +80,7 @@ export default function SharikSpbPage() {
                                 К моменту начала проекта сайт не обновлялся с 2008 года, не отвечал текущим требованиям оптовых клиентов и не поддерживал ключевые бизнес-процессы. Основной поток заказов шел через физические магазины Cash&Carry.
                             </p>
                             <p className="mb-6">
-                                Нужен был современный, удобный и функциональный сайт для оптовых покупателей, с калькулятором услуги печати на шарах.
+                                Нужен был современный, удобный и функциональный сайт для оптовых покупателей, с калькулятором стоимости услуг и возможностью быстрого заказа.
                             </p>
                             <p className="text-white font-bold mt-6">Болевые точки:</p>
                             <ul className="list-none pl-0 space-y-2 mt-2">
@@ -90,7 +90,7 @@ export default function SharikSpbPage() {
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <ArrowRight className="w-4 h-4 text-primary" />
-                                    Ручной расчет стоимости печати на шарах.
+                                    Сложный ручной расчет стоимости нанесения и услуг.
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <ArrowRight className="w-4 h-4 text-primary" />
@@ -113,7 +113,7 @@ export default function SharikSpbPage() {
                             <div className="p-6 border border-border bg-surface/20">
                                 <Calculator className="w-8 h-8 text-primary mb-4" />
                                 <h4 className="font-bold uppercase mb-2">Калькулятор услуг</h4>
-                                <p className="text-sm text-gray-400">Интерактивный расчет стоимости печати логотипов на шарах.</p>
+                                <p className="text-sm text-gray-400">Интерактивный расчет стоимости брендирования и персонализации продукции.</p>
                             </div>
                             <div className="p-6 border border-border bg-surface/20">
                                 <Database className="w-8 h-8 text-primary mb-4" />
@@ -136,32 +136,32 @@ export default function SharikSpbPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="order-2 lg:order-1">
                             <h2 className="text-3xl font-bold uppercase mb-6 text-white">
-                                Калькулятор Печати
+                                Быстрый Заказ и Калькулятор
                             </h2>
                             <p className="text-gray-400 mb-8 text-lg">
-                                Мы разработали сложный интерактивный инструмент, который позволяет клиентам самостоятельно рассчитать стоимость печати, выбрав материал, тираж и метод нанесения.
+                                Мы внедрили систему, которая экономит время менеджеров и клиентов. Сложные расчеты стоимости нанесения теперь происходят автоматически, а формирование оптового заказа занимает считанные минуты.
                             </p>
                             <ul className="space-y-4 mb-8">
                                 <li className="flex items-center gap-4 p-4 border border-border bg-background">
                                     <div className="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full font-bold">1</div>
-                                    <span>Учет всех параметров (газ/воздух, цвета, стороны)</span>
+                                    <span>Загрузка заказа из Excel с автораспознаванием артикулов</span>
                                 </li>
                                 <li className="flex items-center gap-4 p-4 border border-border bg-background">
                                     <div className="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full font-bold">2</div>
-                                    <span>Моментальный пересчет стоимости</span>
+                                    <span>Мгновенный расчет стоимости брендирования любого тиража</span>
                                 </li>
                                 <li className="flex items-center gap-4 p-4 border border-border bg-background">
                                     <div className="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full font-bold">3</div>
-                                    <span>Оформление заказа в один клик</span>
+                                    <span>Оформление сложного оптового заказа в один клик</span>
                                 </li>
                             </ul>
                         </div>
-                        <div className="order-1 lg:order-2 relative aspect-[4/3] border border-border group overflow-hidden bg-background">
+                        <div className="order-1 lg:order-2 relative aspect-[16/10] border border-border group overflow-hidden bg-background">
                             <Image
-                                src="/cases/sharik-spb-calculator.png"
+                                src="/cases/sharik-print-calc.jpg"
                                 alt="Print Calculator Interface"
                                 fill
-                                className="object-cover object-left-top"
+                                className="object-contain"
                             />
                             <div className="absolute bottom-4 right-4 bg-primary text-black font-bold px-4 py-2 text-xs uppercase">
                                 Interactive Module

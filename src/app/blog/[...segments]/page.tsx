@@ -1,7 +1,8 @@
 import BlogCard from '@/components/blog/BlogCard';
 import BlogSidebar from '@/components/blog/BlogSidebar';
 import Pagination from '@/components/blog/Pagination';
-import PostToolbar from '@/components/blog/PostToolbar';
+
+import BackButton from '@/components/blog/BackButton';
 import { blogService } from '@/services/blogService';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -169,7 +170,7 @@ export default async function BlogSegmentsPage({ params, searchParams }: PagePro
                 <div className="container mx-auto px-4 mb-20">
                     <div className="border-b border-white/10 pb-8">
                         <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-4">
-                            System <span className="text-stroke">Logs</span>
+                            Blog
                         </h1>
                         <div className="flex justify-between items-end">
                             <p className="text-gray-400 max-w-xl font-light">
@@ -230,13 +231,10 @@ export default async function BlogSegmentsPage({ params, searchParams }: PagePro
                 </div>
 
                 <div className="container mx-auto px-4">
-                    <Link
-                        href={`/blog/${canonicalCategory || categorySlug}`}
-                        className="inline-flex items-center gap-2 text-gray-500 hover:text-primary transition-colors mb-12 font-mono text-sm uppercase tracking-widest group"
-                    >
-                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        Вернуться к блогу
-                    </Link>
+                    <BackButton
+                        fallbackUrl={`/blog/${canonicalCategory || categorySlug}`}
+                        label="Вернуться к блогу"
+                    />
 
                     <header className="max-w-4xl mx-auto mb-16 border-b border-border pb-12">
                         <div className="flex flex-wrap gap-4 mb-8 font-mono text-xs text-primary uppercase tracking-widest">
@@ -255,32 +253,26 @@ export default async function BlogSegmentsPage({ params, searchParams }: PagePro
                             {post.title}
                         </h1>
 
-                        {post.coverImage && (
+                        {(post.detailImage || post.coverImage) && (
                             <div className="relative w-full border border-border p-1 bg-surface mb-8 group overflow-hidden">
                                 <img
-                                    src={post.coverImage}
+                                    src={post.detailImage || post.coverImage}
                                     alt={post.title}
-                                    className="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    className="w-full h-[300px] md:h-[500px] object-cover"
                                 />
                             </div>
                         )}
                     </header>
 
                     <div className="max-w-3xl mx-auto">
-                        <PostToolbar title={post.title} />
+
 
                         <div
                             className="blog-content"
                             dangerouslySetInnerHTML={{ __html: post.content }}
                         />
 
-                        <div className="mt-16 pt-8 border-t border-border">
-                            <div className="flex flex-wrap gap-2">
-                                <div className="flex flex-wrap gap-2">
-                                    {/* Tags hidden temporarily */}
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </article>

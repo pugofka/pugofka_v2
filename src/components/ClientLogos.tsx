@@ -19,44 +19,54 @@ const wrap = (min: number, max: number, v: number) => {
 
 const clients = [
     {
-        name: "Kapous",
-        logo: "/clients/kapous.svg",
+        name: "Sharik",
+        logo: "/cases/clients_logo/sharik.png",
         category: "E-commerce",
     },
     {
         name: "SpaDream",
-        logo: "/clients/spadream.svg",
+        logo: "/cases/clients_logo/spa.png",
         category: "E-commerce",
     },
     {
-        name: "New Balance",
-        logo: "/clients/new-balance.svg",
-        category: "Retail",
-    },
-    {
-        name: "Timberland",
-        logo: "/clients/timberland.svg",
-        category: "Retail",
-    },
-    {
         name: "AlfaStrakhovanie",
-        logo: "/clients/alfastrah.svg",
+        logo: "/cases/clients_logo/alfastrah.png",
         category: "Insurance",
     },
     {
-        name: "Vilebrequin",
-        logo: "/clients/vilebrequin.svg",
+        name: "HSE",
+        logo: "/cases/clients_logo/hse.png",
+        category: "Education",
+    },
+    {
+        name: "Akvabook",
+        logo: "/cases/clients_logo/akvabook.png",
+        category: "E-commerce",
+    },
+    {
+        name: "Begemot",
+        logo: "/cases/clients_logo/begemot.png",
         category: "Retail",
     },
     {
-        name: "Bitrix24",
-        logo: "/clients/bitrix24.svg",
-        category: "Partner",
+        name: "Clover Group",
+        logo: "/cases/clients_logo/clovergroup.png",
+        category: "Business",
     },
     {
-        name: "1С-Битрикс",
-        logo: "/clients/1c-bitrix.svg",
-        category: "Partner",
+        name: "iLike",
+        logo: "/cases/clients_logo/ilike.png",
+        category: "Tech",
+    },
+    {
+        name: "Stronto",
+        logo: "/cases/clients_logo/stronto.png",
+        category: "Finance",
+    },
+    {
+        name: "VeloMart",
+        logo: "/cases/clients_logo/velomart.png",
+        category: "E-commerce",
     },
 ];
 
@@ -179,12 +189,12 @@ function LogoItem({ client }: { client: typeof clients[0] }) {
             <div className="absolute inset-0 -z-10 bg-white/0 group-hover:bg-white/5 blur-2xl rounded-full transition-all duration-500 scale-0 group-hover:scale-150" />
 
             {client.logo ? (
-                <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-500 opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110">
+                <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-500 opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110">
                     <Image
                         src={client.logo}
                         alt={client.name}
                         fill
-                        className="object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-500"
+                        className="object-contain transition-all duration-500"
                     />
                 </div>
             ) : (

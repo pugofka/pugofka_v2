@@ -31,7 +31,7 @@ export default function ZateyPage() {
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border mb-8">
                             <Globe className="w-4 h-4 text-primary" />
                             <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">
-                                Federal Support / Microservices
+                                Federal Support / E-commerce
                             </span>
                         </div>
 
@@ -107,7 +107,7 @@ export default function ZateyPage() {
                             <div className="p-6 border border-border bg-surface/20">
                                 <Server className="w-8 h-8 text-primary mb-4" />
                                 <h4 className="font-bold uppercase mb-2">Микросервисы</h4>
-                                <p className="text-sm text-gray-400">Выделили поиск, доставку и печать в отдельные независимые сервисы.</p>
+                                <p className="text-sm text-gray-400">Выделили поиск и чекаут в отдельные независимые сервисы для стабильности.</p>
                             </div>
                             <div className="p-6 border border-border bg-surface/20">
                                 <Search className="w-8 h-8 text-primary mb-4" />
@@ -121,8 +121,8 @@ export default function ZateyPage() {
                             </div>
                             <div className="p-6 border border-border bg-surface/20">
                                 <Truck className="w-8 h-8 text-primary mb-4" />
-                                <h4 className="font-bold uppercase mb-2">Логистика</h4>
-                                <p className="text-sm text-gray-400">Панель управления доставками для менеджеров, расчеты 5Post и Яндекса.</p>
+                                <h4 className="font-bold uppercase mb-2">Доставка</h4>
+                                <p className="text-sm text-gray-400">Подключили сервисы доставки Яндекс и 5Post для автоматического расчета.</p>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@ export default function ZateyPage() {
                                 <Box className="w-8 h-8 text-gray-400" />
                             </div>
                             <h3 className="font-bold uppercase mb-2">Microservices</h3>
-                            <p className="text-sm text-gray-500">Search, Print, Delivery</p>
+                            <p className="text-sm text-gray-500">Search, Integration</p>
                         </div>
                     </div>
                 </div>
@@ -203,9 +203,9 @@ export default function ZateyPage() {
                         <div className="border border-border p-8 flex gap-6 group hover:bg-surface/10 transition-colors">
                             <div className="text-5xl font-bold text-stroke text-transparent group-hover:text-primary transition-colors">04</div>
                             <div>
-                                <h3 className="text-xl font-bold uppercase mb-4">Управление Логистикой</h3>
+                                <h3 className="text-xl font-bold uppercase mb-4">Integrations</h3>
                                 <p className="text-gray-400">
-                                    Создали интерфейс для логистов, где можно настраивать расписание, выходные дни и зоны доставки без участия разработчиков.
+                                    Интегрировали службы доставки Яндекс Доставка и 5Post. Пользователи могут выбирать удобный способ получения, а стоимость рассчитывается автоматически.
                                 </p>
                             </div>
                         </div>
@@ -242,7 +242,7 @@ export default function ZateyPage() {
                         </div>
                         <div className="relative aspect-[4/3] border border-border group overflow-hidden">
                             <Image
-                                src="/cases/zatey-delivery.png"
+                                src="/cases/zatey-doelivery.jpg"
                                 alt="Delivery Management"
                                 fill
                                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -251,9 +251,13 @@ export default function ZateyPage() {
                                 Интерфейс доставки
                             </div>
                         </div>
-                        <div className="relative aspect-[4/3] border border-border group overflow-hidden bg-background flex items-center justify-center">
-                            {/* Placeholder for Express Cart */}
-                            <Zap className="w-16 h-16 text-primary mb-4 opacity-50" />
+                        <div className="relative aspect-[4/3] border border-border group overflow-hidden">
+                            <Image
+                                src="/cases/zatey-zakaz.jpg"
+                                alt="Express Order Interface"
+                                fill
+                                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            />
                             <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
                                 Экспресс-заказ
                             </div>
