@@ -195,6 +195,38 @@ body {
   border-left-color: var(--primary);
 }
 
+.blog-content pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e5e7eb;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.blog-content code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--primary);
+  border-radius: 3px;
+}
+
+.blog-content pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
 .video-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;
