@@ -41,7 +41,7 @@ export default function Header() {
 
                 <div className="hidden md:flex gap-8 font-mono text-sm text-gray-400 items-center">
                     <Link href="/blog" className="hover:text-primary transition-colors uppercase tracking-widest">
-                        System_Logs
+                        Blog
                     </Link>
                     <div className="h-4 w-px bg-border" />
                     <Link href="/company" className="hover:text-primary transition-colors uppercase tracking-widest">
