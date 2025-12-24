@@ -15,33 +15,37 @@ export const validateContactForm = (data: {
     if (!data.name || data.name.trim().length < 2) {
         errors.name = 'Имя должно содержать минимум 2 символа';
     }
-    if (data.name && data.name.length > 100) {
-        errors.name = 'Имя не должно превышать 100 символов';
-    }
 
-    // Contact validation (email, phone, or telegram)
-    if (!data.contact || data.contact.trim().length < 5) {
+    // Contact validation - accept any string
+    if (!data.contact || data.contact.trim().length < 2) {
         errors.contact = 'Укажите контакт для связи';
     }
-    if (data.contact && data.contact.length > 255) {
-        errors.contact = 'Контакт слишком длинный';
-    }
 
-    // Basic format check for contact (email or phone-like)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /[\d\s\-\+\(\)]{7,}/;
-    const telegramRegex = /@\w+|t\.me/;
-
-    if (data.contact &&
-        !emailRegex.test(data.contact) &&
-        !phoneRegex.test(data.contact) &&
-        !telegramRegex.test(data.contact)) {
-        errors.contact = 'Укажите email, телефон или Telegram';
-    }
 
     // Description validation
     if (data.description && data.description.length > 2000) {
         errors.description = 'Описание не должно превышать 2000 символов';
+    }
+
+    // Block code in description
+    if (data.description) {
+        const codePatterns = [
+            /<script[\s>]/i,                    // script tags
+            /<style[\s>]/i,                     // style tags
+            /<\?php/i,                          // PHP
+            /\bfunction\s*\(/,                  // function declarations
+            /\bconst\s+\w+\s*=/,                // const declarations
+            /\blet\s+\w+\s*=/,                  // let declarations
+            /\bvar\s+\w+\s*=/,                  // var declarations
+            /\bimport\s+.*\bfrom\b/,            // import statements
+            /\bexport\s+(default|const|function)/, // export statements
+            /\{\s*\n.*\n\s*\}/,                   // multi-line braces (code blocks)
+        ];
+
+        const hasCode = codePatterns.some(pattern => pattern.test(data.description!));
+        if (hasCode) {
+            errors.description = 'Описание не должно содержать программный код';
+        }
     }
 
     return Object.keys(errors).length > 0 ? errors : null;
