@@ -59,7 +59,11 @@ export default function Footer() {
                             Связь
                         </h4>
                         <ul className="space-y-4 font-mono text-sm">
-
+                            <li>
+                                <Link href="/contacts" className="hover:text-primary transition-colors flex items-center gap-2">
+                                    КОНТАКТЫ <ArrowUpRight className="w-3 h-3" />
+                                </Link>
+                            </li>
                             <li>
                                 <a href="mailto:info@pugofka.com" className="hover:text-primary transition-colors flex items-center gap-2">
                                     EMAIL <ArrowUpRight className="w-3 h-3" />
