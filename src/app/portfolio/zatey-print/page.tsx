@@ -64,10 +64,10 @@ export default function ZateyPrintPage() {
                                 Для этого создать специализированный сервис, при помощи которого можно будет в режиме онлайн создавать макеты принтов для печати на шарах и оформлять заказы любого объёма.
                             </p>
                         </div>
-                        <h2 className="text-3xl font-bold uppercase mb-8 flex items-center gap-3">
+                        <h3 className="text-2xl font-bold uppercase mt-12 mb-8 flex items-center gap-3">
                             <span className="w-3 h-3 bg-primary rounded-full" />
                             Поиск решения
-                        </h2>
+                        </h3>
                         <div className="prose prose-invert prose-lg text-gray-400">
                             <p>
                                 Нестандартная форма воздушных шаров, строгие требования к формату, особенности техники нанесения изображения — это лишь некоторые нюансы, которые нужно учитывать при создании макета для печати на воздушных шарах.
@@ -77,12 +77,13 @@ export default function ZateyPrintPage() {
                             </p>
                         </div>
                     </div>
-                    <div className="relative aspect-[16/9] border border-border bg-surface group overflow-hidden">
+                    <div className="relative group">
                         <Image
                             src="/cases/zatey-print-constructor.png"
                             alt="Visual Constructor Interface"
-                            fill
-                            className="object-cover object-top"
+                            width={1600}
+                            height={900}
+                            className="w-full h-auto"
                         />
                         <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
                             Конструктор заказа
@@ -95,7 +96,7 @@ export default function ZateyPrintPage() {
             <section className="py-24 px-6 border-b border-border bg-surface/5">
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-3xl font-bold uppercase mb-12 text-center">Функционал</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div className="p-6 border border-border bg-background hover:border-primary transition-colors">
                             <MousePointerClick className="w-8 h-8 text-primary mb-4" />
                             <h4 className="font-bold uppercase mb-2">Интерфейс</h4>
@@ -106,11 +107,7 @@ export default function ZateyPrintPage() {
                             <h4 className="font-bold uppercase mb-2">Экспорт</h4>
                             <p className="text-sm text-gray-400">Экспорт готового изображения в подходящем для печати формате.</p>
                         </div>
-                        <div className="p-6 border border-border bg-background hover:border-primary transition-colors">
-                            <Eye className="w-8 h-8 text-primary mb-4" />
-                            <h4 className="font-bold uppercase mb-2">Адаптивность</h4>
-                            <p className="text-sm text-gray-400">Корректная работа сервиса на разных типах устройств.</p>
-                        </div>
+
                         <div className="p-6 border border-border bg-background hover:border-primary transition-colors">
                             <Settings className="w-8 h-8 text-primary mb-4" />
                             <h4 className="font-bold uppercase mb-2">Скорость</h4>
@@ -123,12 +120,13 @@ export default function ZateyPrintPage() {
             {/* Testing & Optimization Section */}
             <section className="py-24 px-6 border-b border-border bg-surface/5">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="relative aspect-square md:aspect-[4/3] border border-border bg-surface group overflow-hidden order-2 lg:order-1">
+                    <div className="relative group order-2 lg:order-1">
                         <Image
                             src="/cases/zatey-print-step1.png"
                             alt="Testing Process"
-                            fill
-                            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            width={1200}
+                            height={900}
+                            className="w-full h-auto"
                         />
                         <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
                             Процесс работы
@@ -181,12 +179,13 @@ export default function ZateyPrintPage() {
                             </p>
                         </div>
                     </div>
-                    <div className="relative aspect-square md:aspect-[4/3] border border-border bg-surface group overflow-hidden">
+                    <div className="relative group">
                         <Image
                             src="/cases/zatey-print-step2.png"
                             alt="Final Design"
-                            fill
-                            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                            width={1200}
+                            height={900}
+                            className="w-full h-auto"
                         />
                         <div className="absolute bottom-0 left-0 bg-background/90 px-4 py-2 border-t border-r border-border text-xs font-mono uppercase">
                             Финальный результат

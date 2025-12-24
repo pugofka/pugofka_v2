@@ -131,6 +131,44 @@ export default function KapousWebPage() {
                 </div>
             </section>
 
+            {/* Hybrid Architecture Section */}
+            <section className="py-24 px-6 border-b border-border">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h2 className="text-3xl font-bold uppercase mb-8 flex items-center gap-3">
+                                <span className="w-3 h-3 bg-primary rounded-full" />
+                                Гибридная архитектура
+                            </h2>
+                            <div className="prose prose-invert prose-lg text-gray-400">
+                                <p>
+                                    Внедрили Lumen как слой бизнес-логики внутрь Битрикса. Это позволило использовать возможности Laravel для обработки данных, сохраняя при этом функционал CMS.
+                                </p>
+                                <p>
+                                    Такой подход дал нам гибкость фреймворка там, где это критично — в бизнес-логике и интеграциях, — и стабильность CMS для контента и административной части.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="border border-border p-8 bg-surface/10">
+                            <div className="flex items-center gap-4 mb-6">
+                                <Layers className="w-12 h-12 text-primary" />
+                                <div className="h-px flex-1 bg-border" />
+                            </div>
+                            <div className="grid grid-cols-2 gap-6 text-center">
+                                <div className="p-4 border border-border bg-background">
+                                    <div className="text-2xl font-bold text-primary mb-2">Laravel</div>
+                                    <div className="text-xs font-mono text-gray-500 uppercase">Гибкость</div>
+                                </div>
+                                <div className="p-4 border border-border bg-background">
+                                    <div className="text-2xl font-bold mb-2">Битрикс</div>
+                                    <div className="text-xs font-mono text-gray-500 uppercase">Возможности и функционал</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Gallery */}
             <section className="py-24 px-6 border-b border-border bg-surface/30">
                 <div className="max-w-7xl mx-auto">

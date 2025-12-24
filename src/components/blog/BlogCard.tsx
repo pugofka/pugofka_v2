@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowRight, FileText } from 'lucide-react';
-import { BlogPost } from '@/data/blogData';
+import { BlogPost } from '@/services/blogService';
 
 interface BlogCardProps {
     post: BlogPost;

@@ -141,6 +141,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 if (descriptionRef.current) descriptionRef.current.value = '';
                 setSelectedTypes([]);
                 setFile(null);
+                if (fileInputRef.current) fileInputRef.current.value = '';
 
                 // Close modal after delay
                 setTimeout(() => {
@@ -236,9 +237,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                                 ref={nameRef}
                                                 type="text"
                                                 placeholder="ИВАН ИВАНОВ / ООО РОМАШКА"
-                                                className={`w-full bg-surface/50 border p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none ${
-                                                    errors.name ? 'border-red-500' : 'border-transparent focus:border-primary'
-                                                }`}
+                                                className={`w-full bg-surface/50 border p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none ${errors.name ? 'border-red-500' : 'border-transparent focus:border-primary'
+                                                    }`}
                                             />
                                             {errors.name && (
                                                 <p className="text-xs text-red-400 font-mono">{errors.name}</p>
@@ -255,9 +255,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                                 ref={contactRef}
                                                 type="text"
                                                 placeholder="TELEGRAM / WHATSAPP / EMAIL"
-                                                className={`w-full bg-surface/50 border p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none ${
-                                                    errors.contact ? 'border-red-500' : 'border-transparent focus:border-primary'
-                                                }`}
+                                                className={`w-full bg-surface/50 border p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none ${errors.contact ? 'border-red-500' : 'border-transparent focus:border-primary'
+                                                    }`}
                                             />
                                             {errors.contact && (
                                                 <p className="text-xs text-red-400 font-mono">{errors.contact}</p>
@@ -298,9 +297,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                                 ref={descriptionRef}
                                                 rows={3}
                                                 placeholder="РАССКАЖИТЕ О ВАШИХ ЦЕЛЯХ..."
-                                                className={`w-full bg-surface/50 border p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none resize-none ${
-                                                    errors.description ? 'border-red-500' : 'border-transparent focus:border-primary'
-                                                }`}
+                                                className={`w-full bg-surface/50 border p-3 text-base transition-all placeholder:text-muted-foreground/30 outline-none resize-none ${errors.description ? 'border-red-500' : 'border-transparent focus:border-primary'
+                                                    }`}
                                             />
                                             {errors.description && (
                                                 <p className="text-xs text-red-400 font-mono">{errors.description}</p>
@@ -314,19 +312,36 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                                 ref={fileInputRef}
                                                 onChange={handleFileChange}
                                                 className="hidden"
+                                                accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png"
                                             />
-                                            <button
-                                                type="button"
-                                                onClick={() => fileInputRef.current?.click()}
-                                                className="flex items-center gap-3 text-xs text-gray-400 hover:text-white transition-colors group"
-                                            >
-                                                <div className="w-8 h-8 rounded-full bg-surface/50 flex items-center justify-center group-hover:bg-surface transition-colors">
-                                                    {file ? <Check className="w-4 h-4 text-green-500" /> : <Paperclip className="w-4 h-4" />}
-                                                </div>
-                                                <span className="border-b border-dashed border-gray-600 group-hover:border-white pb-0.5">
-                                                    {file ? file.name : 'Прикрепить бриф или ТЗ'}
-                                                </span>
-                                            </button>
+                                            <div className="flex items-center gap-3">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => fileInputRef.current?.click()}
+                                                    className="flex items-center gap-3 text-xs text-gray-400 hover:text-white transition-colors group"
+                                                >
+                                                    <div className="w-8 h-8 rounded-full bg-surface/50 flex items-center justify-center group-hover:bg-surface transition-colors">
+                                                        {file ? <Check className="w-4 h-4 text-green-500" /> : <Paperclip className="w-4 h-4" />}
+                                                    </div>
+                                                    <span className="border-b border-dashed border-gray-600 group-hover:border-white pb-0.5 max-w-[200px] truncate">
+                                                        {file ? file.name : 'Прикрепить бриф или ТЗ'}
+                                                    </span>
+                                                </button>
+
+                                                {file && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            setFile(null);
+                                                            if (fileInputRef.current) fileInputRef.current.value = '';
+                                                        }}
+                                                        className="p-1.5 hover:bg-surface/50 rounded-full text-gray-500 hover:text-red-500 transition-colors"
+                                                        title="Удалить файл"
+                                                    >
+                                                        <X className="w-4 h-4" />
+                                                    </button>
+                                                )}
+                                            </div>
                                             {errors.file && (
                                                 <p className="text-xs text-red-400 font-mono">{errors.file}</p>
                                             )}

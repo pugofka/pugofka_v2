@@ -22,18 +22,18 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
                     className="flex items-center gap-2 px-4 py-2 border border-border bg-surface hover:border-primary hover:text-primary transition-colors uppercase tracking-wider"
                 >
                     <ArrowLeft className="w-4 h-4" />
-                    <span>Prev_Page</span>
+                    <span>НАЗАД</span>
                 </Link>
             ) : (
                 <span className="flex items-center gap-2 px-4 py-2 border border-border/30 text-gray-700 uppercase tracking-wider cursor-not-allowed">
                     <ArrowLeft className="w-4 h-4" />
-                    <span>Prev_Page</span>
+                    <span>НАЗАД</span>
                 </span>
             )}
 
             {/* PAGE INDICATOR */}
             <div className="px-6 py-2 border-x border-border bg-surface/50 text-gray-400">
-                PAGE <span className="text-white font-bold">{currentPage}</span> / {totalPages}
+                СТР. <span className="text-white font-bold">{currentPage}</span> / {totalPages}
             </div>
 
             {/* NEXT BUTTON */}
@@ -42,12 +42,12 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
                     href={`${baseUrl}?page=${nextPage}`}
                     className="flex items-center gap-2 px-4 py-2 border border-border bg-surface hover:border-primary hover:text-primary transition-colors uppercase tracking-wider"
                 >
-                    <span>Next_Page</span>
+                    <span>ДАЛЕЕ</span>
                     <ArrowRight className="w-4 h-4" />
                 </Link>
             ) : (
                 <span className="flex items-center gap-2 px-4 py-2 border border-border/30 text-gray-700 uppercase tracking-wider cursor-not-allowed">
-                    <span>Next_Page</span>
+                    <span>ДАЛЕЕ</span>
                     <ArrowRight className="w-4 h-4" />
                 </span>
             )}

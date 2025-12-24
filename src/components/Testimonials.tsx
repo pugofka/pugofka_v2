@@ -131,7 +131,7 @@ export default function Testimonials() {
                             <div className="text-xs text-gray-500 font-mono mt-1">{item.role}</div>
                         </div>
 
-                        <div className="flex-grow overflow-y-auto pr-2 mb-6 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent hover:scrollbar-thumb-primary/50">
+                        <div className="flex-grow overflow-y-auto pr-2 mb-6 custom-scrollbar">
                             <p className="text-lg leading-relaxed text-gray-300">
                                 "{item.quote}"
                             </p>
