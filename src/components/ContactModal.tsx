@@ -87,15 +87,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
         setLoading(true);
 
-        // Helper to convert file to base64
-        const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result as string);
-            reader.onerror = error => reject(error);
-        });
-
-        let fileData = null;
         if (file) {
             // Check file size (max 5MB)
             if (file.size > 5 * 1024 * 1024) {
@@ -103,32 +94,23 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 setLoading(false);
                 return;
             }
-
-            try {
-                fileData = await toBase64(file);
-            } catch (error) {
-                console.error('Error converting file:', error);
-                setErrors({ file: 'Ошибка при обработке файла' });
-                setLoading(false);
-                return;
-            }
         }
 
-        const formData = {
-            name: rawFormData.name,
-            contact: rawFormData.contact,
-            types: selectedTypes.map(label => PROJECT_TYPES.find(t => t.label === label)?.value || label),
-            description: rawFormData.description,
-            fileContent: fileData
-        };
+        const formData = new FormData();
+        formData.append('name', rawFormData.name);
+        formData.append('contact', rawFormData.contact);
+        formData.append('description', rawFormData.description);
+        selectedTypes
+            .map(label => PROJECT_TYPES.find(t => t.label === label)?.value || label)
+            .forEach(type => formData.append('types', type));
+        if (file) {
+            formData.append('file', file, file.name);
+        }
 
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                body: formData,
             });
 
             const data = await response.json().catch(() => ({ success: response.ok }));
