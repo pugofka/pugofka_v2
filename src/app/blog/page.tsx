@@ -48,7 +48,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
             <div className="container mx-auto px-4 mb-20">
                 <div className="border-b border-white/10 pb-8">
                     <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter mb-4">
-                        System <span className="text-stroke">Logs</span>
+                        Блог
                     </h1>
                     <div className="flex justify-between items-end">
                         <p className="text-gray-400 max-w-xl font-light">
