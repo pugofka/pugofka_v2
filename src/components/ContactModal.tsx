@@ -12,12 +12,12 @@ interface ContactModalProps {
 }
 
 const PROJECT_TYPES = [
-    'Интернет-магазин',
-    'Корпоративный сайт',
-    'Стартап / MVP',
-    'Внедрение CRM',
-    'Поддержка',
-    'Другое'
+    { label: 'Интернет-магазин', value: 'shop' },
+    { label: 'Корпоративный сайт', value: 'corporate' },
+    { label: 'Стартап / MVP', value: 'mvp' },
+    { label: 'Внедрение CRM', value: 'crm' },
+    { label: 'Поддержка', value: 'support' },
+    { label: 'Другое', value: 'other' }
 ];
 
 const API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || 'https://api.pugofka.com/api/contact';
@@ -117,7 +117,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         const formData = {
             name: rawFormData.name,
             contact: rawFormData.contact,
-            types: selectedTypes,
+            types: selectedTypes.map(label => PROJECT_TYPES.find(t => t.label === label)?.value || label),
             description: rawFormData.description,
             fileContent: fileData
         };
@@ -270,18 +270,18 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                             </label>
                                             <div className="flex flex-wrap gap-2">
                                                 {PROJECT_TYPES.map((type) => {
-                                                    const isSelected = selectedTypes.includes(type);
+                                                    const isSelected = selectedTypes.includes(type.label);
                                                     return (
                                                         <button
-                                                            key={type}
+                                                            key={type.value}
                                                             type="button"
-                                                            onClick={() => toggleType(type)}
+                                                            onClick={() => toggleType(type.label)}
                                                             className={`px-3 py-2 text-xs font-mono transition-all border ${isSelected
                                                                 ? 'bg-primary border-primary text-white'
                                                                 : 'bg-surface/50 border-transparent text-gray-400 hover:border-gray-600'
                                                                 }`}
                                                         >
-                                                            {type}
+                                                            {type.label}
                                                         </button>
                                                     );
                                                 })}
