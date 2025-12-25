@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Paperclip, Check, Loader2, AlertCircle } from 'lucide-react';
 import { createPortal } from 'react-dom';
+import Link from 'next/link';
 import { validateContactForm, sanitizeInput, ValidationError } from '@/utils/validation';
 
 interface ContactModalProps {
@@ -351,7 +352,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                         )}
                                     </button>
                                     <p className="text-[10px] text-muted-foreground text-center font-mono mt-3 opacity-50">
-                                        НАЖИМАЯ КНОПКУ, ВЫ СОГЛАШАЕТЕСЬ С ПОЛИТИКОЙ КОНФИДЕНЦИАЛЬНОСТИ
+                                        Нажимая кнопку, вы соглашаетесь с{' '}
+                                        <Link href="/privacy" className="underline underline-offset-4 hover:text-white transition-colors">
+                                            политикой конфиденциальности
+                                        </Link>
                                     </p>
                                 </div>
                             </>
