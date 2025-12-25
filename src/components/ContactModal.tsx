@@ -102,7 +102,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         formData.append('description', rawFormData.description);
         selectedTypes
             .map(label => PROJECT_TYPES.find(t => t.label === label)?.value || label)
-            .forEach(type => formData.append('types', type));
+            .forEach(type => formData.append('types[]', type));
         if (file) {
             formData.append('file', file, file.name);
         }
