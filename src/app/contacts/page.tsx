@@ -50,7 +50,6 @@ export default function ContactsPage() {
         payload.append('name', cleanData.name);
         payload.append('contact', cleanData.contact);
         payload.append('description', cleanData.description);
-        payload.append('types', 'Contact Page Form');
 
         try {
             const response = await fetch(API_URL, {
