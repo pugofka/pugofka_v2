@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Header from '@/components/Header';
 import { Mail, MapPin, Phone, ArrowRight, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { validateContactForm, sanitizeInput, ValidationError } from '@/utils/validation';
@@ -229,6 +230,12 @@ export default function ContactsPage() {
                                         'Отправить'
                                     )}
                                 </button>
+                                <p className="text-[10px] text-gray-500 text-center font-mono mt-3 uppercase tracking-widest">
+                                    Нажимая кнопку, вы соглашаетесь с{' '}
+                                    <Link href="/privacy" className="underline underline-offset-4 hover:text-white transition-colors">
+                                        политикой конфиденциальности
+                                    </Link>
+                                </p>
                             </form>
                         </motion.div>
                     </div>
