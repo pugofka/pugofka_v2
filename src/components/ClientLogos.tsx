@@ -156,7 +156,7 @@ export default function ClientLogos() {
                 <div className="flex items-center justify-center gap-4">
                     <div className="h-px w-12 bg-border" />
                     <h2 className="text-xs md:text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground/60">
-                        Доверие / Clients
+                        Доверие / Клиенты
                     </h2>
                     <div className="h-px w-12 bg-border" />
                 </div>
