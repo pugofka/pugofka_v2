@@ -19,54 +19,57 @@ const wrap = (min: number, max: number, v: number) => {
 
 const clients = [
     {
-        name: "Sharik",
-        logo: "/cases/clients_logo/sharik.png",
+        name: "Aurora",
+        logo: "/cases/clients_logo/aurora.svg",
+        category: "E-commerce",
+    },
+    {
+        name: "DKNY",
+        logo: "/cases/clients_logo/dkny.svg",
+        category: "E-commerce",
+        invert: true,
+    },
+    {
+        name: "Egomania",
+        logo: "/cases/clients_logo/egomania.svg",
+        category: "E-commerce",
+        invert: true,
+    },
+    {
+        name: "Kapous",
+        logo: "/cases/clients_logo/kapous.svg",
+        category: "E-commerce",
+        invert: true,
+    },
+    {
+        name: "AlfaStrakhovanie",
+        logo: "/cases/clients_logo/logo_alfa.svg",
+        category: "Insurance",
+    },
+    {
+        name: "New Balance",
+        logo: "/cases/clients_logo/New-Balance.svg",
+        category: "E-commerce",
+    },
+    {
+        name: "Sharik SPB",
+        logo: "/cases/clients_logo/sharikspb.svg",
         category: "E-commerce",
     },
     {
         name: "SpaDream",
-        logo: "/cases/clients_logo/spa.png",
+        logo: "/cases/clients_logo/spadream-logo.svg",
         category: "E-commerce",
     },
     {
-        name: "AlfaStrakhovanie",
-        logo: "/cases/clients_logo/alfastrah.png",
-        category: "Insurance",
+        name: "Vilebrequin",
+        logo: "/cases/clients_logo/Vilebrequin.svg",
+        category: "E-commerce",
     },
     {
-        name: "HSE",
-        logo: "/cases/clients_logo/hse.png",
+        name: "HSE (VSCHE)",
+        logo: "/cases/clients_logo/vsche.svg",
         category: "Education",
-    },
-    {
-        name: "Akvabook",
-        logo: "/cases/clients_logo/akvabook.png",
-        category: "E-commerce",
-    },
-    {
-        name: "Begemot",
-        logo: "/cases/clients_logo/begemot.png",
-        category: "Retail",
-    },
-    {
-        name: "Clover Group",
-        logo: "/cases/clients_logo/clovergroup.png",
-        category: "Business",
-    },
-    {
-        name: "iLike",
-        logo: "/cases/clients_logo/ilike.png",
-        category: "Tech",
-    },
-    {
-        name: "Stronto",
-        logo: "/cases/clients_logo/stronto.png",
-        category: "Finance",
-    },
-    {
-        name: "VeloMart",
-        logo: "/cases/clients_logo/velomart.png",
-        category: "E-commerce",
     },
 ];
 
@@ -153,7 +156,7 @@ export default function ClientLogos() {
                 <div className="flex items-center justify-center gap-4">
                     <div className="h-px w-12 bg-border" />
                     <h2 className="text-xs md:text-sm font-mono uppercase tracking-[0.3em] text-muted-foreground/60">
-                        Доверие / Clients
+                        Доверие / Клиенты
                     </h2>
                     <div className="h-px w-12 bg-border" />
                 </div>
@@ -182,14 +185,14 @@ export default function ClientLogos() {
     );
 }
 
-function LogoItem({ client }: { client: typeof clients[0] }) {
+function LogoItem({ client }: { client: any }) {
     return (
         <div className="group flex flex-col items-center justify-center gap-8 min-w-[200px] md:min-w-[300px] cursor-pointer relative">
             {/* Hover Glow Background */}
             <div className="absolute inset-0 -z-10 bg-white/0 group-hover:bg-white/5 blur-2xl rounded-full transition-all duration-500 scale-0 group-hover:scale-150" />
 
             {client.logo ? (
-                <div className="relative h-12 w-36 md:h-16 md:w-48 transition-all duration-500 opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110">
+                <div className={`relative h-12 w-36 md:h-16 md:w-48 transition-all duration-500 opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110 ${client.invert ? 'invert' : ''}`}>
                     <Image
                         src={client.logo}
                         alt={client.name}
