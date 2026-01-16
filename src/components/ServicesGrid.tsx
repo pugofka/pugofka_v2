@@ -73,7 +73,7 @@ export default function ServicesGrid() {
                                 <service.icon className="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" />
                             </div>
 
-                            <h3 className="text-3xl font-bold uppercase mb-1 leading-none">
+                            <h3 className="text-3xl font-bold uppercase mb-1 leading-none whitespace-nowrap">
                                 {service.title}
                             </h3>
                             <h3 className="text-3xl font-bold uppercase text-gray-600 mb-6 leading-none group-hover:text-primary transition-colors">

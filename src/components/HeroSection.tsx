@@ -42,7 +42,7 @@ export default function HeroSection() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-border pt-12">
             <div className="md:col-span-5">
               <p className="text-xl text-gray-400 leading-relaxed font-light">
-                Строим <span className="text-white font-medium">Highload системы</span>, масштабируем <span className="text-white font-medium">E-commerce</span> и запускаем стартапы.
+                Строим <span className="text-white font-medium">Highload системы</span>, масштабируем <span className="text-white font-medium whitespace-nowrap">E-commerce</span> и запускаем стартапы.
                 Технологический партнер с бутиковым подходом.
               </p>
             </div>
