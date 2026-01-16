@@ -11,8 +11,12 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white overflow-x-hidden">
       <HeroSection />
       <TechStack />
-      <ServicesGrid />
-      <CasesGrid />
+      <section id="services">
+        <ServicesGrid />
+      </section>
+      <section id="portfolio">
+        <CasesGrid />
+      </section>
       <ClientLogos />
       <Testimonials />
       <TrustManifest />

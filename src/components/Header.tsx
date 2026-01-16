@@ -40,16 +40,20 @@ export default function Header() {
                 </Link>
 
                 <div className="hidden md:flex gap-8 font-mono text-sm text-gray-400 items-center">
-                    <Link href="/blog" className="hover:text-primary transition-colors uppercase tracking-widest">
-                        Blog
+                    <Link href="/#services" className="hover:text-primary transition-colors uppercase tracking-widest">
+                        Услуги
                     </Link>
                     <div className="h-4 w-px bg-border" />
-                    <Link href="/company" className="hover:text-primary transition-colors uppercase tracking-widest">
-                        Manifesto
+                    <Link href="/#portfolio" className="hover:text-primary transition-colors uppercase tracking-widest">
+                        Портфолио
                     </Link>
-                    <div className="h-4 w-px bg-border" />
-                    <span>EST. 2011</span>
-                    <span>ST. PETERSBURG</span>
+
+                    <button
+                        onClick={openContact}
+                        className="ml-4 bg-primary text-white px-6 py-2.5 hover:bg-red-600 transition-colors uppercase tracking-widest cursor-pointer font-bold text-xs"
+                    >
+                        Связаться
+                    </button>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -79,31 +83,29 @@ export default function Header() {
                                 Главная
                             </Link>
                             <Link
-                                href="/blog"
+                                href="/#services"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="hover:text-primary transition-colors"
                             >
-                                Блог
+                                Услуги
                             </Link>
                             <Link
-                                href="/company"
+                                href="/#portfolio"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="hover:text-primary transition-colors"
                             >
-                                Manifesto
+                                Портфолио
                             </Link>
-                            <Link
-                                href="/contacts"
-                                onClick={() => setIsMenuOpen(false)}
-                                className="hover:text-primary transition-colors"
+                            <button
+                                onClick={() => {
+                                    setIsMenuOpen(false);
+                                    openContact();
+                                }}
+                                className="hover:text-primary transition-colors text-left cursor-pointer"
                             >
-                                Контакты
-                            </Link>
+                                Связаться
+                            </button>
                         </nav>
-                        <div className="mt-12 flex flex-col gap-4 text-sm font-mono text-gray-400">
-                            <span>EST. 2011</span>
-                            <span>ST. PETERSBURG</span>
-                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
